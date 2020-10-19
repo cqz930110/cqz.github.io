@@ -1,0 +1,1225 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-Hans">
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="theme-color" content="#222">
+<meta name="referrer" content="no-referrer">
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="iOS,苹果内购,">
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="内购逻辑图">
+<meta name="keywords" content="iOS,苹果内购">
+<meta property="og:type" content="article">
+<meta property="og:title" content="iOS内购总结">
+<meta property="og:url" content="https://www.cqzhong.cn/2018/07/21/iOS内购总结/index.html">
+<meta property="og:site_name" content="cqzhong&#39;s blog">
+<meta property="og:description" content="内购逻辑图">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="https://cdn.nlark.com/yuque/0/2020/png/1028501/1602930701163-4e439d69-c257-4998-9ce1-0eb1e7bddb14.png#align=left&display=inline&height=800&margin=%5Bobject%20Object%5D&originHeight=800&originWidth=1315&size=0&status=done&style=none&width=1315">
+<meta property="og:image" content="https://cdn.nlark.com/yuque/0/2020/png/1028501/1602930699959-7be52f08-a367-4fed-be19-7be9470ba251.png#align=left&display=inline&height=212&margin=%5Bobject%20Object%5D&originHeight=212&originWidth=714&size=0&status=done&style=none&width=714">
+<meta property="og:updated_time" content="2020-10-19T13:21:20.646Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="iOS内购总结">
+<meta name="twitter:description" content="内购逻辑图">
+<meta name="twitter:image" content="https://cdn.nlark.com/yuque/0/2020/png/1028501/1602930701163-4e439d69-c257-4998-9ce1-0eb1e7bddb14.png#align=left&display=inline&height=800&margin=%5Bobject%20Object%5D&originHeight=800&originWidth=1315&size=0&status=done&style=none&width=1315">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="https://www.cqzhong.cn/2018/07/21/iOS内购总结/">
+
+
+
+
+
+  <title>iOS内购总结 | cqzhong's blog</title>
+  
+
+
+
+
+
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?ee03412f14872b2f3cdc536eda6712c9";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">cqzhong's blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">曹庆中</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br>
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br>
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br>
+            
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off" placeholder="搜索..." spellcheck="false" type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://www.cqzhong.cn/2018/07/21/iOS内购总结/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="曹庆中">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="https://picture.cqzhong.cn/avatar.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="cqzhong's blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">iOS内购总结</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-07-21T12:58:06+08:00">
+                2018-07-21
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/移动端/" itemprop="url" rel="index">
+                    <span itemprop="name">移动端</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h2 id="内购逻辑图"><a class="markdownIt-Anchor" href="#内购逻辑图"></a> 内购逻辑图</h2>
+<a id="more"></a>
+<p><img src="https://cdn.nlark.com/yuque/0/2020/png/1028501/1602930701163-4e439d69-c257-4998-9ce1-0eb1e7bddb14.png#align=left&amp;display=inline&amp;height=800&amp;margin=%5Bobject%20Object%5D&amp;originHeight=800&amp;originWidth=1315&amp;size=0&amp;status=done&amp;style=none&amp;width=1315" alt></p>
+<h4 id="1-内购的四种类型"><a class="markdownIt-Anchor" href="#1-内购的四种类型"></a> 1、内购的四种类型</h4>
+<ul>
+<li>消耗性项目：在支付成功以后，苹果后台就不会再返回该物品的票据信息。</li>
+<li>非消耗性项目：支付成功以后，会永久保留该票据信息，每次校验都会返回。</li>
+<li>自动续期订阅：支付成功以后，每次都会自动续期，每次订单都是同一个 ID，但标识不同，每次续期成功后返回该 ID</li>
+<li>非续期订阅：支付成功以后，在有效期内，每次校验订单信息，都会返回处于有效期内订单信息，有效期过期之后不再返回。</li>
+</ul>
+<h4 id="2-发起支付"><a class="markdownIt-Anchor" href="#2-发起支付"></a> 2、发起支付</h4>
+<ul>
+<li>此处是拿 iTunes 注册的商品 ID 去像苹果服务器支付</li>
+</ul>
+<h4 id="3-苹果服务器返回票据信息给-app"><a class="markdownIt-Anchor" href="#3-苹果服务器返回票据信息给-app"></a> 3、 苹果服务器返回票据信息给 App</h4>
+<h4 id="4-app-将返回的票据信息发送给自家服务器"><a class="markdownIt-Anchor" href="#4-app-将返回的票据信息发送给自家服务器"></a> 4、App 将返回的票据信息发送给自家服务器</h4>
+<h4 id="5-app-服务器携带票据信息向苹果服务器验证-应放到服务端去进行验证此处给一个例子-app-端向服务端验证"><a class="markdownIt-Anchor" href="#5-app-服务器携带票据信息向苹果服务器验证-应放到服务端去进行验证此处给一个例子-app-端向服务端验证"></a> 5、App 服务器携带票据信息，向苹果服务器验证。（应放到服务端去进行验证，此处给一个例子 app 端向服务端验证）</h4>
+<figure class="highlight objectivec"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">- (<span class="keyword">void</span>)verifyReceipt:(<span class="built_in">NSData</span> *)receipt purchaseWithPaymentTransaction:(<span class="built_in">SKPaymentTransaction</span> *)transaction isTestServer:(<span class="built_in">BOOL</span>)flag &#123;</span><br><span class="line"></span><br><span class="line">        <span class="comment">//交易验证</span></span><br><span class="line">        <span class="built_in">NSError</span> *error;</span><br><span class="line">        <span class="built_in">NSDictionary</span> *requestContents = @&#123;</span><br><span class="line"></span><br><span class="line">                                          <span class="string">@"receipt-data"</span>: [receipt base64EncodedStringWithOptions:<span class="number">0</span>]</span><br><span class="line"></span><br><span class="line">                                          &#125;;</span><br><span class="line"></span><br><span class="line">        <span class="built_in">NSData</span> *requestData = [<span class="built_in">NSJSONSerialization</span> dataWithJSONObject:requestContents</span><br><span class="line"></span><br><span class="line">                                                              options:<span class="number">0</span></span><br><span class="line"></span><br><span class="line">                                                                error:&amp;error];</span><br><span class="line"></span><br><span class="line">        <span class="comment">//In the test environment, use https://sandbox.itunes.apple.com/verifyReceipt</span></span><br><span class="line"></span><br><span class="line">        <span class="comment">//In the real environment, use https://buy.itunes.apple.com/verifyReceipt</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">        <span class="built_in">NSString</span> *serverString = <span class="string">@"https://buy.itunes.apple.com/verifyReceipt"</span>;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span> (flag) &#123;</span><br><span class="line"></span><br><span class="line">                serverString = <span class="string">@"https://sandbox.itunes.apple.com/verifyReceipt"</span>;</span><br><span class="line"></span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="built_in">NSURL</span> *storeURL = [<span class="built_in">NSURL</span> URLWithString:serverString];</span><br><span class="line"></span><br><span class="line">        <span class="built_in">NSMutableURLRequest</span> *storeRequest = [<span class="built_in">NSMutableURLRequest</span> requestWithURL:storeURL];</span><br><span class="line"></span><br><span class="line">        [storeRequest setHTTPMethod:<span class="string">@"POST"</span>];</span><br><span class="line"></span><br><span class="line">        [storeRequest setHTTPBody:requestData];</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">        <span class="built_in">NSOperationQueue</span> *queue = [[<span class="built_in">NSOperationQueue</span> alloc] init];</span><br><span class="line"></span><br><span class="line">        [<span class="built_in">NSURLConnection</span> sendAsynchronousRequest:storeRequest queue:queue</span><br><span class="line"></span><br><span class="line">                               completionHandler:^(<span class="built_in">NSURLResponse</span> *response, <span class="built_in">NSData</span> *data, <span class="built_in">NSError</span> *connectionError) &#123;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">                                       <span class="keyword">if</span> (connectionError) &#123;</span><br><span class="line"></span><br><span class="line">                                               <span class="comment">// 无法连接服务器,购买校验失败</span></span><br><span class="line"></span><br><span class="line">                                               [<span class="keyword">self</span> finished:transaction content:<span class="literal">nil</span> withError:connectionError];</span><br><span class="line"></span><br><span class="line">                                       &#125; <span class="keyword">else</span> &#123;</span><br><span class="line"></span><br><span class="line">                                               <span class="built_in">NSError</span> *error;</span><br><span class="line"></span><br><span class="line">                                               <span class="built_in">NSDictionary</span> *jsonResponse = [<span class="built_in">NSJSONSerialization</span> JSONObjectWithData:data options:<span class="number">0</span> error:&amp;error];</span><br><span class="line"></span><br><span class="line">                                               <span class="keyword">if</span> (!jsonResponse) &#123;</span><br><span class="line"></span><br><span class="line">                                                       <span class="comment">// 苹果服务器校验数据返回为空校验失败</span></span><br><span class="line"></span><br><span class="line">                                                       <span class="built_in">NSError</span> *recepitErr = [<span class="built_in">NSError</span> errorWithDomain:PayiTunesErrorDomain code:<span class="number">-1</span> userInfo:@&#123;<span class="built_in">NSLocalizedDescriptionKey</span> : ErrorDesForCode(PayiTunesErrorCodeCloudServiceNetworkConnectionFailed)&#125;];</span><br><span class="line"></span><br><span class="line">                                                       [<span class="keyword">self</span> finished:transaction content:<span class="literal">nil</span> withError:recepitErr];</span><br><span class="line"></span><br><span class="line">                                               &#125;</span><br><span class="line"></span><br><span class="line">                                               <span class="built_in">NSLogDebug</span>(<span class="string">@"----验证结果 %@"</span>,jsonResponse);</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">                                               <span class="comment">// 先验证正式服务器,如果正式服务器返回21007再去苹果测试服务器验证,沙盒测试环境苹果用的是测试服务器</span></span><br><span class="line"></span><br><span class="line">                                               <span class="built_in">NSString</span> *status = [<span class="built_in">NSString</span> stringWithFormat:<span class="string">@"%@"</span>,jsonResponse[<span class="string">@"status"</span>]];</span><br><span class="line"></span><br><span class="line">                                               <span class="keyword">if</span> (status &amp;&amp; [status isEqualToString:<span class="string">@"21007"</span>]) &#123;</span><br><span class="line"></span><br><span class="line">                                                       [<span class="keyword">self</span> verifyReceipt:receipt purchaseWithPaymentTransaction:transaction isTestServer:<span class="literal">YES</span>];</span><br><span class="line"></span><br><span class="line">                                               &#125; <span class="keyword">else</span> <span class="keyword">if</span>(status &amp;&amp; [status isEqualToString:<span class="string">@"0"</span>])&#123;</span><br><span class="line"></span><br><span class="line">                                                       [<span class="keyword">self</span> finished:transaction content:<span class="literal">nil</span> withError:<span class="literal">nil</span>];</span><br><span class="line"></span><br><span class="line">                                               &#125;</span><br><span class="line"></span><br><span class="line">                                       &#125;</span><br><span class="line"></span><br><span class="line">                               &#125;];</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="6-返回校验结果服务器根据不同类型商品去选择对应处理方式"><a class="markdownIt-Anchor" href="#6-返回校验结果服务器根据不同类型商品去选择对应处理方式"></a> 6、返回校验结果，服务器根据不同类型商品去选择对应处理方式</h4>
+<ul>
+<li>如果应用内都是消耗性物品购买。只需去 inapp 字段的第一个值就可以</li>
+<li>如果应用内有第二种和第四种，就需要遍历循环 inapp 的字段处理，判断里面的 original_transaction_id,是否已经被使用过，如果使用过，忽略。如果未使用，标记对应状态，入库存储。</li>
+<li>如果有第三种状态，同样遍历循环 inapp 字段，判断 original_transaction_id 和 transaction_id，是否需要增加续订日子(未测试)</li>
+</ul>
+<h4 id="7-如果是网络问题或者是服务器数据问题导致客户端接收到错误信息则该笔交易未完成但是苹果后台的标示是已付款-则-app-再次向苹果服务器发起支付的时候不会扣费之后返回对应票据信息"><a class="markdownIt-Anchor" href="#7-如果是网络问题或者是服务器数据问题导致客户端接收到错误信息则该笔交易未完成但是苹果后台的标示是已付款-则-app-再次向苹果服务器发起支付的时候不会扣费之后返回对应票据信息"></a> 7、 如果是网络问题或者是服务器数据问题，导致客户端接收到错误信息，则该笔交易未完成，但是苹果后台的标示是已付款。则 app 再次向苹果服务器发起支付的时候，不会扣费，之后返回对应票据信息。</h4>
+<h4 id="8-举个例子放到本地去向苹果服务器做验证"><a class="markdownIt-Anchor" href="#8-举个例子放到本地去向苹果服务器做验证"></a> 8、举个例子：放到本地去向苹果服务器做验证</h4>
+<figure class="highlight objc"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="number">2018</span><span class="number">-07</span><span class="number">-21</span> <span class="number">16</span>:<span class="number">29</span>:<span class="number">24.180774</span>+<span class="number">0800</span> NiuWaJiaoYu[<span class="number">2583</span>:<span class="number">584940</span>] ------------- 请求对应的产品信息--(</span><br><span class="line">    <span class="string">"com.NiuWa.niuwaketang_yue"</span></span><br><span class="line"></span><br><span class="line">) --------------</span><br><span class="line"></span><br><span class="line"><span class="number">2018</span><span class="number">-07</span><span class="number">-21</span> <span class="number">16</span>:<span class="number">29</span>:<span class="number">25.295599</span>+<span class="number">0800</span> NiuWaJiaoYu[<span class="number">2583</span>:<span class="number">584940</span>] --------------收到产品反馈消息---------------------</span><br><span class="line"></span><br><span class="line"><span class="number">2018</span><span class="number">-07</span><span class="number">-21</span> <span class="number">16</span>:<span class="number">29</span>:<span class="number">25.295966</span>+<span class="number">0800</span> NiuWaJiaoYu[<span class="number">2583</span>:<span class="number">584940</span>] =====================产品信息==================</span><br><span class="line"></span><br><span class="line"><span class="number">2018</span><span class="number">-07</span><span class="number">-21</span> <span class="number">16</span>:<span class="number">29</span>:<span class="number">25.296181</span>+<span class="number">0800</span> NiuWaJiaoYu[<span class="number">2583</span>:<span class="number">584940</span>] productID:(</span><br><span class="line"></span><br><span class="line">)</span><br><span class="line"></span><br><span class="line"><span class="number">2018</span><span class="number">-07</span><span class="number">-21</span> <span class="number">16</span>:<span class="number">29</span>:<span class="number">25.296263</span>+<span class="number">0800</span> NiuWaJiaoYu[<span class="number">2583</span>:<span class="number">584940</span>] 产品付费数量:<span class="number">1</span></span><br><span class="line"></span><br><span class="line"><span class="number">2018</span><span class="number">-07</span><span class="number">-21</span> <span class="number">16</span>:<span class="number">29</span>:<span class="number">25.296341</span>+<span class="number">0800</span> NiuWaJiaoYu[<span class="number">2583</span>:<span class="number">584940</span>] [pro description] &lt;<span class="built_in">SKProduct</span>: <span class="number">0x170200040</span>&gt;</span><br><span class="line"></span><br><span class="line"><span class="number">2018</span><span class="number">-07</span><span class="number">-21</span> <span class="number">16</span>:<span class="number">29</span>:<span class="number">25.296438</span>+<span class="number">0800</span> NiuWaJiaoYu[<span class="number">2583</span>:<span class="number">584940</span>] [pro localizedTitle]  牛娃课堂月会员</span><br><span class="line"></span><br><span class="line"><span class="number">2018</span><span class="number">-07</span><span class="number">-21</span> <span class="number">16</span>:<span class="number">29</span>:<span class="number">25.296530</span>+<span class="number">0800</span> NiuWaJiaoYu[<span class="number">2583</span>:<span class="number">584940</span>] [pro localizedDescription]  购买此会员后，可以在接下来一个月的时间内免费使用牛娃课堂所有学习资源。</span><br><span class="line"></span><br><span class="line"><span class="number">2018</span><span class="number">-07</span><span class="number">-21</span> <span class="number">16</span>:<span class="number">29</span>:<span class="number">25.296655</span>+<span class="number">0800</span> NiuWaJiaoYu[<span class="number">2583</span>:<span class="number">584940</span>] [pro price]  <span class="number">1598</span></span><br><span class="line"></span><br><span class="line"><span class="number">2018</span><span class="number">-07</span><span class="number">-21</span> <span class="number">16</span>:<span class="number">29</span>:<span class="number">25.296705</span>+<span class="number">0800</span> NiuWaJiaoYu[<span class="number">2583</span>:<span class="number">584940</span>] [pro productIdentifier]  com.NiuWa.niuwaketang_yue</span><br><span class="line"></span><br><span class="line"><span class="number">2018</span><span class="number">-07</span><span class="number">-21</span> <span class="number">16</span>:<span class="number">29</span>:<span class="number">25.296818</span>+<span class="number">0800</span> NiuWaJiaoYu[<span class="number">2583</span>:<span class="number">584940</span>] 商品添加进列表 com.NiuWa.niuwaketang_yue</span><br><span class="line"></span><br><span class="line"><span class="number">2018</span><span class="number">-07</span><span class="number">-21</span> <span class="number">16</span>:<span class="number">29</span>:<span class="number">25.299607</span>+<span class="number">0800</span> NiuWaJiaoYu[<span class="number">2583</span>:<span class="number">584940</span>] =====================产品信息==================</span><br><span class="line"></span><br><span class="line"><span class="number">2018</span><span class="number">-07</span><span class="number">-21</span> <span class="number">16</span>:<span class="number">29</span>:<span class="number">25.299747</span>+<span class="number">0800</span> NiuWaJiaoYu[<span class="number">2583</span>:<span class="number">584940</span>] ------------- 请求对应的产品信息完毕--&lt;<span class="built_in">SKProductsRequest</span>: <span class="number">0x174432480</span>&gt; --------------</span><br><span class="line"></span><br><span class="line"><span class="number">2018</span><span class="number">-07</span><span class="number">-21</span> <span class="number">16</span>:<span class="number">29</span>:<span class="number">29.770250</span>+<span class="number">0800</span> NiuWaJiaoYu[<span class="number">2583</span>:<span class="number">584940</span>] [Harpy]: Please make sure that you have set _presentationViewController before calling checkVersion, checkVersionDaily, or checkVersionWeekly.</span><br><span class="line"></span><br><span class="line"><span class="number">2018</span><span class="number">-07</span><span class="number">-21</span> <span class="number">16</span>:<span class="number">29</span>:<span class="number">32.144827</span>+<span class="number">0800</span> NiuWaJiaoYu[<span class="number">2583</span>:<span class="number">584940</span>] [Harpy]: Please make sure that you have set _presentationViewController before calling checkVersion, checkVersionDaily, or checkVersionWeekly.</span><br><span class="line"></span><br><span class="line"><span class="number">2018</span><span class="number">-07</span><span class="number">-21</span> <span class="number">16</span>:<span class="number">29</span>:<span class="number">32.870369</span>+<span class="number">0800</span> NiuWaJiaoYu[<span class="number">2583</span>:<span class="number">584940</span>] 交易完成  com.NiuWa.niuwaketang_yue</span><br><span class="line"></span><br><span class="line"><span class="number">2018</span><span class="number">-07</span><span class="number">-21</span> <span class="number">16</span>:<span class="number">29</span>:<span class="number">32.870486</span>+<span class="number">0800</span> NiuWaJiaoYu[<span class="number">2583</span>:<span class="number">584940</span>] 交易结束,验证票据信息</span><br><span class="line"></span><br><span class="line"><span class="number">2018</span><span class="number">-07</span><span class="number">-21</span> <span class="number">16</span>:<span class="number">29</span>:<span class="number">35.997449</span>+<span class="number">0800</span> NiuWaJiaoYu[<span class="number">2583</span>:<span class="number">584940</span>] 拿到票据信息向苹果服务器验证：</span><br><span class="line"></span><br><span class="line"> 请求链接：https:<span class="comment">//sandbox.itunes.apple.com/verifyReceipt,</span></span><br><span class="line"></span><br><span class="line"> 请求头信息：&#123;</span><br><span class="line"></span><br><span class="line">&#125;,</span><br><span class="line"></span><br><span class="line"> 请求Method：POST,</span><br><span class="line"></span><br><span class="line"> 请求Body: &#123;<span class="string">"receipt-data"</span>:<span class="string">"MIIomAYJKoZIhvcNAQcCoIIoiTCCKIUCAQExCzAJBgUrDgMCGgUAMIIYOQYJKoZIhvcNAQcBoIIYKgSCGCYxghgiMAoCAQgCAQEEAhYAMAoCARQCAQEEAgwAMAsCAQECAQEEAwIBADALAgELAgEBBAMCAQAwCwIBDgIBAQQDAgFrMAsCAQ8CAQEEAwIBADALAgEQAgEBBAMCAQAwCwIBGQIBAQQDAgEDMAwCAQoCAQEEBBYCNCswDQIBDQIBAQQFAgMBh88wDQIBEwIBAQQFDAMxLjAwDgIBCQIBAQQGAgRQMjUwMBgCAQICAQEEEAwOY29tLm5pdXdhLmlwYWQwGAIBAwIBAQQQDA4yMDE4MDMxNTEwMjE1NTAYAgEEAgECBBB7PLpH6Z\/pOfQeVikMoYe3MBsCAQACAQEEEwwRUHJvZHVjdGlvblNhbmRib3gwHAIBBQIBAQQU4I0JGhOO5ZGf5WnQHsj0Tu5hle8wHgIBDAIBAQQWFhQyMDE4LTA3LTIxVDA4OjI5OjMyWjAeAgESAgEBBBYWFDIwMTMtMDgtMDFUMDc6MDA6MDBaMEgCAQYCAQEEQBnfPN4Gyd3ojT7k+xTs7nQyCmfs\/kXep9X+eOFlzcr66F\/iZTc5dh31ejK0YTxvksuvLCFyJ8lrH\/kceHxnnxcwSgIBBwIBAQRCYr6RiZfopSC4\/wQoo0nUHRSYXCxiQgCdUkHp9iITsaOCKx\/7lVuPPsRRw6+Q3shOBnL9rQW4xHsStSmJOGfj0eLMMIIBXQIBEQIBAQSCAVMxggFPMAsCAgasAgEBBAIWADALAgIGrQIBAQQ</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">2018-07-21 16:29:38.168848+0800 NiuWaJiaoYu[2583:585724] ----验证结果 &#123;</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">    environment = Sandbox;</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">    receipt =     &#123;</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">        "</span>adam_id<span class="string">" = 0;</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">        "</span>app_item_id<span class="string">" = 0;</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">        "</span>application_version<span class="string">" = 20180315102155;</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">        "</span>bundle_id<span class="string">" = "</span>com.niuwa.ipad<span class="string">";</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">        "</span>download_id<span class="string">" = 0;</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">        "</span>in_app<span class="string">" =         (</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">                        &#123;</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">                "</span>is_trial_period<span class="string">" = false;</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">                "</span>original_purchase_date<span class="string">" = "</span><span class="number">2018</span><span class="number">-03</span><span class="number">-22</span> <span class="number">04</span>:<span class="number">20</span>:<span class="number">37</span> Etc/GMT<span class="string">";</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">                "</span>original_purchase_date_ms<span class="string">" = 1521692437000;</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">                "</span>original_purchase_date_pst<span class="string">" = "</span><span class="number">2018</span><span class="number">-03</span><span class="number">-21</span> <span class="number">21</span>:<span class="number">20</span>:<span class="number">37</span> America/Los_Angeles<span class="string">";</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">                "</span>original_transaction_id<span class="string">" = 1000000384329524;</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">                "</span>product_id<span class="string">" = "</span>com.NiuWa.niuwaketang_ji<span class="string">";</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">                "</span>purchase_date<span class="string">" = "</span><span class="number">2018</span><span class="number">-03</span><span class="number">-22</span> <span class="number">04</span>:<span class="number">20</span>:<span class="number">37</span> Etc/GMT<span class="string">";</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">                "</span>purchase_date_ms<span class="string">" = 1521692437000;</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">                "</span>purchase_date_pst<span class="string">" = "</span><span class="number">2018</span><span class="number">-03</span><span class="number">-21</span> <span class="number">21</span>:<span class="number">20</span>:<span class="number">37</span> America/Los_Angeles<span class="string">";</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">                quantity = 1;</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">                "</span>transaction_id<span class="string">" = 1000000384329524;</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">            &#125;,</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">                        &#123;</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">                "</span>is_trial_</span><br></pre></td></tr></table></figure>
+<h4 id="9-拿到票据信息向苹果服务器做验证的状态码"><a class="markdownIt-Anchor" href="#9-拿到票据信息向苹果服务器做验证的状态码"></a> 9、拿到票据信息向苹果服务器做验证的状态码</h4>
+<p><img src="https://cdn.nlark.com/yuque/0/2020/png/1028501/1602930699959-7be52f08-a367-4fed-be19-7be9470ba251.png#align=left&amp;display=inline&amp;height=212&amp;margin=%5Bobject%20Object%5D&amp;originHeight=212&amp;originWidth=714&amp;size=0&amp;status=done&amp;style=none&amp;width=714" alt></p>
+<h2 id="ios-iap-掉单处理"><a class="markdownIt-Anchor" href="#ios-iap-掉单处理"></a> iOS IAP 掉单处理</h2>
+<p>有哪些请况会发生掉单：<br>
+1、在 ApplePay 付款成功后由于网络或各种原因没有返回 Transaction（SKPaymentTransaction),从而不能得到凭证去 Apple 服务器验证订单的正确性。<br>
+2、苹果服务器成功返回了 Transaction,但是在 APP 在上传凭证给服务器时发生了网络或各种原因，造成了凭证的丢失，产生了掉单（用户付了款却没有得到相应的商品）</p>
+<p>解决方案<br>
+[SKPaymentQueue defaultQueue]这个队列里面存着所有的已支付，未支付的订单，而且需要手动移除，而 APP 每次启动的时候都会去判断这个队列里面是否为空，如果不为空的话会调用代理的<br>
+// 此函数回调队列中所有订单信息</p>
+<ul>
+<li>(void)paymentQueue:(SKPaymentQueue _)queue updatedTransactions:(NSArray *)transactions<br>
+所以我们可以把 AppDelegate 设置成这个协议的代理并实现这个方法，当然我一般是会写一个遵循的工具类单例，毕竟协议是一对一的，不管是哪里的支付回调，都只走这个类，统一处理。<br>
+移除代码： [[SKPaymentQueue defaultQueue]finishTransaction:transaction]</li>
+</ul>
+<p>当我们创建苹果订单初始化 SKPayment 时我们应该使用 SKMutablePayment,这个类里面有一个参数叫 applicationUsername 的成员变量，我们可以把后台服务器的订单号写到这里，在付款成功后返回的 SKPaymentTransaction 里面能拿到这个参数，然后就带着它去请求本地服务器</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">CDDLog(@&quot;=====订单号%@&quot;,tran.payment.applicationUsername);</span><br></pre></td></tr></table></figure>
+<p>附：<a href="https://developer.apple.com/library/ios/releasenotes/General/ValidateAppStoreReceipt/Chapters/ValidateRemotely.html#//apple_ref/doc/uid/TP40010573-CH104-SW1" target="_blank" rel="noopener">苹果官方内购验证文档</a></p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/iOS/" rel="tag"># iOS</a>
+          
+            <a href="/tags/苹果内购/" rel="tag"># 苹果内购</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/06/30/pop动画/" rel="next" title="pop动画">
+                <i class="fa fa-chevron-left"></i> pop动画
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2018/07/29/shell片段/" rel="prev" title="shell片段">
+                shell片段 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+    <div class="comments" id="comments">
+      <div id="lv-container" data-id="city" data-uid="MTAyMC80NzI4My8yMzc4Mw=="></div>
+    </div>
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image" src="https://picture.cqzhong.cn/avatar.png" alt="曹庆中">
+            
+              <p class="site-author-name" itemprop="name">曹庆中</p>
+              <p class="site-description motion-element" itemprop="description">学如逆水行舟,不进则退。心似平原走马,易放难追。</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">73</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">7</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">47</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/cqzhong" target="_blank" title="GitHub">
+                      
+                        <i class="fa fa-fw fa-github"></i>GitHub</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="mailto:1024463782@qq.com" target="_blank" title="E-Mail">
+                      
+                        <i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="https://gitee.com/cqzhong" target="_blank" title="码云">
+                      
+                        <i class="fa fa-fw fa-google"></i>码云</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="http://picture.cqzhong.cn/Wechat.jpeg" target="_blank" title="微信">
+                      
+                        <i class="fa fa-fw fa-weixin"></i>微信</a>
+                  </span>
+                
+            </div>
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#内购逻辑图"><span class="nav-number">1.</span> <span class="nav-text"> 内购逻辑图</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-内购的四种类型"><span class="nav-number">1.0.1.</span> <span class="nav-text"> 1、内购的四种类型</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-发起支付"><span class="nav-number">1.0.2.</span> <span class="nav-text"> 2、发起支付</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-苹果服务器返回票据信息给-app"><span class="nav-number">1.0.3.</span> <span class="nav-text"> 3、 苹果服务器返回票据信息给 App</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#4-app-将返回的票据信息发送给自家服务器"><span class="nav-number">1.0.4.</span> <span class="nav-text"> 4、App 将返回的票据信息发送给自家服务器</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#5-app-服务器携带票据信息向苹果服务器验证-应放到服务端去进行验证此处给一个例子-app-端向服务端验证"><span class="nav-number">1.0.5.</span> <span class="nav-text"> 5、App 服务器携带票据信息，向苹果服务器验证。（应放到服务端去进行验证，此处给一个例子 app 端向服务端验证）</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#6-返回校验结果服务器根据不同类型商品去选择对应处理方式"><span class="nav-number">1.0.6.</span> <span class="nav-text"> 6、返回校验结果，服务器根据不同类型商品去选择对应处理方式</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#7-如果是网络问题或者是服务器数据问题导致客户端接收到错误信息则该笔交易未完成但是苹果后台的标示是已付款-则-app-再次向苹果服务器发起支付的时候不会扣费之后返回对应票据信息"><span class="nav-number">1.0.7.</span> <span class="nav-text"> 7、 如果是网络问题或者是服务器数据问题，导致客户端接收到错误信息，则该笔交易未完成，但是苹果后台的标示是已付款。则 app 再次向苹果服务器发起支付的时候，不会扣费，之后返回对应票据信息。</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#8-举个例子放到本地去向苹果服务器做验证"><span class="nav-number">1.0.8.</span> <span class="nav-text"> 8、举个例子：放到本地去向苹果服务器做验证</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#9-拿到票据信息向苹果服务器做验证的状态码"><span class="nav-number">1.0.9.</span> <span class="nav-text"> 9、拿到票据信息向苹果服务器做验证的状态码</span></a></li></ol></li></ol><li class="nav-item nav-level-2"><a class="nav-link" href="#ios-iap-掉单处理"><span class="nav-number">2.</span> <span class="nav-text"> iOS IAP 掉单处理</span></a></li></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2020</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">曹庆中</span>
+
+  
+</div>
+
+
+  <div class="powered-by">豫ICP备19030079号</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">爱国敬业</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+    <script type="text/javascript">
+      (function(d, s) {
+        var j, e = d.getElementsByTagName(s)[0];
+        if (typeof LivereTower === 'function') { return; }
+        j = d.createElement(s);
+        j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+        j.async = true;
+        e.parentNode.insertBefore(j, e);
+      })(document, 'script');
+    </script>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url);
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+
+  
+<script>
+(function(){
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';        
+    }
+    else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
+
+
+  
+  
+
+  
+  
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+      });
+    </script>
+
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+      });
+    </script>
+    <script type="text/javascript" src="cdn.bootcss.com/mathjax/2.7.1/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+  
+
+
+  
+
+  
+
+<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"debug":false,"model":{"jsonPath":"/live2dw/assets/hijiki.model.json"},"display":{"position":"left","width":260,"height":420,"hOffset":0,"vOffset":100},"mobile":{"show":false,"scale":0.5},"log":false});</script></body>
+</html>
+
+<!-- <script type="text/javascript" src="/js/love_click.js"></script> -->
+

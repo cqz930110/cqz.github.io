@@ -1,0 +1,1286 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-Hans">
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="theme-color" content="#222">
+<meta name="referrer" content="no-referrer">
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="iOS,Android,react native,">
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="一、背景 原生（Native）应用因其性能优秀、体验较好而获得了广大用户和开发者的欢迎。但是，原生应用开发周期长、支持设备有限等问题也困扰着开发者和商户，因而，跨平台移动应用开发成为技术开发者的重要追求。 由于 Apple 严格的审核标准，iOS 应用的发版很受影响，这对于大多数团队来说是不能接受的，所以热更新对于 iOS 应用来说就显得尤其重要。">
+<meta name="keywords" content="iOS,Android,react native">
+<meta property="og:type" content="article">
+<meta property="og:title" content="React Native介绍">
+<meta property="og:url" content="https://www.cqzhong.cn/2019/08/16/React Native介绍/index.html">
+<meta property="og:site_name" content="cqzhong&#39;s blog">
+<meta property="og:description" content="一、背景 原生（Native）应用因其性能优秀、体验较好而获得了广大用户和开发者的欢迎。但是，原生应用开发周期长、支持设备有限等问题也困扰着开发者和商户，因而，跨平台移动应用开发成为技术开发者的重要追求。 由于 Apple 严格的审核标准，iOS 应用的发版很受影响，这对于大多数团队来说是不能接受的，所以热更新对于 iOS 应用来说就显得尤其重要。">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2020-10-19T13:21:20.068Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="React Native介绍">
+<meta name="twitter:description" content="一、背景 原生（Native）应用因其性能优秀、体验较好而获得了广大用户和开发者的欢迎。但是，原生应用开发周期长、支持设备有限等问题也困扰着开发者和商户，因而，跨平台移动应用开发成为技术开发者的重要追求。 由于 Apple 严格的审核标准，iOS 应用的发版很受影响，这对于大多数团队来说是不能接受的，所以热更新对于 iOS 应用来说就显得尤其重要。">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="https://www.cqzhong.cn/2019/08/16/React Native介绍/">
+
+
+
+
+
+  <title>React Native介绍 | cqzhong's blog</title>
+  
+
+
+
+
+
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?ee03412f14872b2f3cdc536eda6712c9";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">cqzhong's blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">曹庆中</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br>
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br>
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br>
+            
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off" placeholder="搜索..." spellcheck="false" type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://www.cqzhong.cn/2019/08/16/React Native介绍/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="曹庆中">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="https://picture.cqzhong.cn/avatar.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="cqzhong's blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">React Native介绍</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-08-16T10:00:00+08:00">
+                2019-08-16
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/移动端/" itemprop="url" rel="index">
+                    <span itemprop="name">移动端</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h4 id="一-背景"><a class="markdownIt-Anchor" href="#一-背景"></a> 一、背景</h4>
+<p>原生（Native）应用因其性能优秀、体验较好而获得了广大用户和开发者的欢迎。但是，原生应用开发周期长、支持设备有限等问题也困扰着开发者和商户，因而，跨平台移动应用开发成为技术开发者的重要追求。<br>
+由于 Apple 严格的审核标准，iOS 应用的发版很受影响，这对于大多数团队来说是不能接受的，所以热更新对于 iOS 应用来说就显得尤其重要。</p>
+<a id="more"></a>
+<h4 id="二-react-native-介绍"><a class="markdownIt-Anchor" href="#二-react-native-介绍"></a> 二、React Native 介绍</h4>
+<p>React Native (简称 RN)是 Facebook 于 2015 年 4 月开源的跨平台移动应用开发框架，是 Facebook 早先开源的 JS 框架 React 在原生移动应用平台的衍生产物，目前支持 iOS 和安卓两大平台。</p>
+<p>使用语言：Javascript，类似于 HTML 的 JSX，以及变异 CSS 来开发移动应用。<br>
+React Native 是以 iOS 或者 Anroid 原生控件为后端，但以 React component 的方式 Expose 出来进行视图渲染的。所以能够达到界面流畅的效果。</p>
+<p>编辑器：Visual Studio Code、 Xcode、Android Studio</p>
+<h4 id="三-react-native-的应用场景"><a class="markdownIt-Anchor" href="#三-react-native-的应用场景"></a> 三、React Native 的应用场景</h4>
+<p>1、纯 RN 的 App，适用于一些界面比较少，功能比较简单的 App。<br>
+2、APP 只有部分页面是由 React Native 实现的，比如：我们常用的携程 App，它的首页下的很多模块都是由 React Native 实现的，这种开发模式被称为混合开发<br>
+3、采用 React Native 可以实现热更新。</p>
+<h4 id="四-react-native-混合开发ios-篇"><a class="markdownIt-Anchor" href="#四-react-native-混合开发ios-篇"></a> 四、React Native 混合开发（iOS 篇）</h4>
+<ul>
+<li>配置好 React Native 依赖和项目结构。</li>
+<li>配置项目目录结构: 首先创建一个空目录用于存放 React Native 项目，然后在其中创建一个/ios 子目录，把你现有的 iOS 项目拷贝到/ios 子目录中。</li>
+<li>安装 JavaScript 依赖包，创建 package.json 的空文本文件。执行以下命令</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yarn add react-native</span><br></pre></td></tr></table></figure>
+<p>所有 JavaScript 依赖模块都会被安装到项目根目录下的 node_modules/目录中（这个目录我们原则上不复制、不移动、不修改、不上传，随用随装）。</p>
+<ul>
+<li>iOS 原生应用内，使用 CocoaPods 倒入相关组件</li>
+</ul>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">pod 'React', :path =&gt; '../node_modules/react-native/'</span><br><span class="line">pod 'React-Core', :path =&gt; '../node_modules/react-native/React'</span><br><span class="line">pod 'React-DevSupport', :path =&gt; '../node_modules/react-native/React'</span><br><span class="line">pod 'React-fishhook', :path =&gt; '../node_modules/react-native/Libraries/fishhook'</span><br><span class="line">pod 'React-RCTActionSheet', :path =&gt; '../node_modules/react-native/Libraries/ActionSheetIOS'</span><br><span class="line">pod 'React-RCTAnimation', :path =&gt; '../node_modules/react-native/Libraries/NativeAnimation'</span><br><span class="line">pod 'React-RCTBlob', :path =&gt; '../node_modules/react-native/Libraries/Blob'</span><br><span class="line">pod 'React-RCTImage', :path =&gt; '../node_modules/react-native/Libraries/Image'</span><br><span class="line">pod 'React-RCTLinking', :path =&gt; '../node_modules/react-native/Libraries/LinkingIOS'</span><br><span class="line">pod 'React-RCTNetwork', :path =&gt; '../node_modules/react-native/Libraries/Network'</span><br><span class="line">pod 'React-RCTSettings', :path =&gt; '../node_modules/react-native/Libraries/Settings'</span><br><span class="line">pod 'React-RCTText', :path =&gt; '../node_modules/react-native/Libraries/Text'</span><br><span class="line">pod 'React-RCTVibration', :path =&gt; '../node_modules/react-native/Libraries/Vibration'</span><br><span class="line">pod 'React-RCTWebSocket', :path =&gt; '../node_modules/react-native/Libraries/WebSocket'</span><br><span class="line"></span><br><span class="line">pod 'React-cxxreact', :path =&gt; '../node_modules/react-native/ReactCommon/cxxreact'</span><br><span class="line">pod 'React-jsi', :path =&gt; '../node_modules/react-native/ReactCommon/jsi'</span><br><span class="line">pod 'React-jsiexecutor', :path =&gt; '../node_modules/react-native/ReactCommon/jsiexecutor'</span><br><span class="line">pod 'React-jsinspector', :path =&gt; '../node_modules/react-native/ReactCommon/jsinspector'</span><br><span class="line"></span><br><span class="line">pod 'yoga', :path =&gt; '../node_modules/react-native/ReactCommon/yoga'</span><br><span class="line"></span><br><span class="line">pod 'DoubleConversion', :podspec =&gt; '../node_modules/react-native/third-party-podspecs/DoubleConversion.podspec'</span><br><span class="line">pod 'glog', :podspec =&gt; '../node_modules/react-native/third-party-podspecs/glog.podspec'</span><br><span class="line">pod 'Folly', :podspec =&gt; '../node_modules/react-native/third-party-podspecs/Folly.podspec'</span><br></pre></td></tr></table></figure>
+<figure class="highlight objc"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pod install</span><br></pre></td></tr></table></figure>
+<ul>
+<li>添加入口内文件：index.ios.js (注意 index.js、 index.ios.js、 index.android.js、index.native.js 含义不同 参见 <a href="https://reactnative.cn/docs/platform-specific-code/" target="_blank" rel="noopener">特定平台代码</a> )<br>
+在入口类文件中 import 相关 js 页面，打包生成 jsbundle 文件时候，是从入口类文件里面找它所有 import 的文件然后合并导出到 main.jsbundle<br>
+将 main.jsbundle 导入到 Xcode 工程内。</li>
+<li>iOS 加载 React Native 页面 （在开发、测试环境调试时候，需要本地开启一个 nodejs 的服务， 开发完成后将 js 打包为 jsbundle 文件集成到项目中）</li>
+</ul>
+<figure class="highlight objc"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#import <span class="meta-string">&lt;React/RCTBundleURLProvider.h&gt;</span></span></span><br><span class="line"><span class="meta">#import <span class="meta-string">&lt;React/RCTRootView.</span></span></span><br><span class="line"><span class="meta"><span class="meta-string"></span></span></span><br><span class="line"><span class="meta"><span class="meta-string">    NSURL *jsCodeLocation = [self sourceURL];</span></span></span><br><span class="line"><span class="meta"><span class="meta-string">    RCTRootView *rootView = [[RCTRootView alloc] initWithBundleURL:jsCodeLocation moduleName:@"purchased_ios" initialProperties:nil launchOptions:nil];</span></span></span><br><span class="line"><span class="meta"><span class="meta-string">    [self.view addSubview:rootView];</span></span></span><br><span class="line"><span class="meta"><span class="meta-string">    [rootView mas_makeConstraints:^(MASConstraintMaker *make) &#123;</span></span></span><br><span class="line"><span class="meta"><span class="meta-string">        make.left.right.equalTo(self.view);</span></span></span><br><span class="line"><span class="meta"><span class="meta-string">        make.top.equalTo(self.view).offset(SafeAreaTopHeight);</span></span></span><br><span class="line"><span class="meta"><span class="meta-string">        make.bottom.equalTo(self.view).offset(-SafeAreaBottomHeight);</span></span></span><br><span class="line"><span class="meta"><span class="meta-string">    &#125;];</span></span></span><br><span class="line"><span class="meta"><span class="meta-string"></span></span></span><br><span class="line"><span class="meta"><span class="meta-string">- (NSURL *)sourceURL &#123;</span></span></span><br><span class="line"><span class="meta"><span class="meta-string"></span></span></span><br><span class="line"><span class="meta"><span class="meta-string">#if defined(DEBUG) || defined(CDTEST)</span></span></span><br><span class="line"><span class="meta"><span class="meta-string"></span></span></span><br><span class="line"><span class="meta"><span class="meta-string">    return [[RCTBundleURLProvider sharedSettings] jsBundleURLForBundleRoot:@"src/purchased.ios" fallbackResource:nil];</span></span></span><br><span class="line"><span class="meta"><span class="meta-string">#else</span></span></span><br><span class="line"><span class="meta"><span class="meta-string">    return [[NSBundle mainBundle] URLForResource:@"main" withExtension:@"jsbundle"];</span></span></span><br><span class="line"><span class="meta"><span class="meta-string">#endif</span></span></span><br><span class="line"><span class="meta"><span class="meta-string"></span></span></span><br><span class="line"><span class="meta"><span class="meta-string">&#125;</span></span></span><br></pre></td></tr></table></figure>
+<p>执行命令生成 jsbundle 文件：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">// 需要在 node_modules同级目录中新建：release_ios文件夹</span><br><span class="line">react-native bundle --entry-file index.ios.js --platform ios --dev <span class="literal">false</span> --bundle-output release_ios/main.jsbundle --assets-dest release_ios/</span><br><span class="line"></span><br><span class="line">/*</span><br><span class="line">* 选择生成的asset文件夹与 main.jsbundle文件，拖拽至 Xcode 的项目导航面板中</span><br><span class="line">* 运行打包，摆脱对本地nodejs服务器的依赖</span><br><span class="line">*/</span><br></pre></td></tr></table></figure>
+<h4 id="五-react-native-混合开发android-篇"><a class="markdownIt-Anchor" href="#五-react-native-混合开发android-篇"></a> 五、React Native 混合开发（Android 篇）</h4>
+<p>1、提前安装所需配置</p>
+<ul>
+<li>Java SDK</li>
+<li>AndroidStudio</li>
+<li>Node</li>
+</ul>
+<p>2、android 的集成 React Native</p>
+<ul>
+<li>新建 android 项目或者在现有项目的 terminal 中执行命令</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">npm init</span><br><span class="line"></span><br><span class="line">package name: (rnappdemo) 输入项目名称，全部小写：rnappdemo</span><br><span class="line">version: (1.0.0) 输入版本号，可以直接回车，也可以输入自己想要的初始版本号</span><br><span class="line">description 输入项目描述，随便输入：first reactnativeapp</span><br><span class="line">entry point: (index.js)输入reactnative的入口文件：index.android.js</span><br><span class="line"><span class="built_in">test</span> <span class="built_in">command</span>: 输入：no</span><br><span class="line">git repository: 输入：no</span><br><span class="line">keywords: 输入：no</span><br><span class="line">author: 输入作者信息</span><br><span class="line">license: (ISC) 输入许可 默认ISC</span><br></pre></td></tr></table></figure>
+<ul>
+<li>在终端窗口执行:npm install --save react react-native 安装 React 和 React Native<br>
+执行完成会在项目根目录多出 node_modules 目录，说明安装成功</li>
+<li>在项目根目录下新建一个名为.flowconfig 的文件，将 <code>[https://raw.githubusercontent.com/facebook/react-native/master/.flowconfig](https://raw.githubusercontent.com/facebook/react-native/master/.flowconfig)</code> 网页的内容复制到.flowconfig 文件中</li>
+<li>在 package.json 文件中的 script 标签里添加&quot;start&quot;: “nodenode_modules/react-native/local-cli/cli.js start”</li>
+<li>在 app 模块 build.gradle 文件中添加在 android-&gt;defaultConfig 最后添加 NDK 支持：<br>
+ndk {<br>
+abiFilters “armeabi-v7a”, “x86”<br>
+}</li>
+</ul>
+<p>在 android 里面添加如下两个配置：<br>
+packagingOptions {<br>
+exclude “lib/arm64-v8a/librealm-jni.so”<br>
+}<br>
+在 dependencies 里面添加 reactnative 依赖：（+最好使用 0.60 以下版本）<br>
+compile “com.facebook.react:react-native:+”</p>
+<ul>
+<li>项目的 build.gradle 配置<br>
+在 allprojects-&gt;respositories 中添加以下内容，加载最新的 react-native 库，然后点击右上角的 Sync now 同步<br>
+maven {<br>
+// All of React Native (JS, Android binaries) is installed from npm<br>
+url “$rootDir/node_modules/react-native/android”<br>
+}</li>
+<li>配置 app 模块 AndroidManifest.xml 文件<br>
+添加网络权限：<br>
+<code>&lt;uses-permissionandroid:name=&quot;android.permission.INTERNET&quot; /&gt;</code><br>
+添加弹窗权限：（这个可以再上线后取消掉）<br>
+<code>&lt;uses-permission android:name=&quot;android.permission.SYSTEM_ALERT_WINDOW&quot;/&gt;</code><br>
+在 application 里添加 reactnative 弹窗内置页面 activity，否则摇晃手机并打开开发者菜单后，点击 Dev Setting，会直接 Crash：<br>
+<code>&lt;activityandroid:name=&quot;com.facebook.react.devsupport.DevSettingsActivity&quot;/&gt;</code></li>
+<li>在项目根目录下添加 index.android.js 文件</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> React from <span class="string">'react'</span>;</span><br><span class="line"> <span class="keyword">import</span> &#123;</span><br><span class="line">   AppRegistry,</span><br><span class="line">   StyleSheet,</span><br><span class="line">   Text,</span><br><span class="line">   View</span><br><span class="line"> &#125; from <span class="string">'react-native'</span>;</span><br><span class="line"> <span class="class"><span class="keyword">class</span> <span class="title">HelloWorld</span> <span class="keyword">extends</span> <span class="title">React</span>.<span class="title">Component</span> </span>&#123;</span><br><span class="line">   render() &#123;</span><br><span class="line">     <span class="keyword">return</span> (</span><br><span class="line">       &lt;View style=&#123;styles.container&#125;&gt;</span><br><span class="line">         &lt;Text style=&#123;styles.hello&#125;&gt;第一个混合RNAPP&lt;/Text&gt;</span><br><span class="line">       &lt;/View&gt;</span><br><span class="line">     )</span><br><span class="line">   &#125;</span><br><span class="line"> &#125;</span><br><span class="line"> <span class="keyword">var</span> styles = StyleSheet.create(&#123;</span><br><span class="line">   container: &#123;</span><br><span class="line">     flex: <span class="number">1</span>,</span><br><span class="line">     justifyContent: <span class="string">'center'</span>,</span><br><span class="line">   &#125;,</span><br><span class="line">   hello: &#123;</span><br><span class="line">     fontSize: <span class="number">20</span>,</span><br><span class="line">     textAlign: <span class="string">'center'</span>,</span><br><span class="line">     margin: <span class="number">10</span>,</span><br><span class="line">   &#125;,</span><br><span class="line"> &#125;);</span><br><span class="line"> AppRegistry.registerComponent(<span class="string">'HelloWorld'</span>, () =&gt; HelloWorld);</span><br></pre></td></tr></table></figure>
+<ul>
+<li>新建 MyReactActivity</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">MainApplication</span> <span class="keyword">extends</span> <span class="title">Application</span> <span class="keyword">implements</span> <span class="title">ReactApplication</span> </span>&#123;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">final</span> ReactNativeHost mReactNativeHost = <span class="keyword">new</span> ReactNativeHost(<span class="keyword">this</span>) &#123;</span><br><span class="line">        <span class="meta">@Override</span></span><br><span class="line">        <span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">getUseDeveloperSupport</span><span class="params">()</span> </span>&#123;</span><br><span class="line">            <span class="keyword">return</span> BuildConfig.DEBUG;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="meta">@Override</span></span><br><span class="line">        <span class="function"><span class="keyword">protected</span> List&lt;ReactPackage&gt; <span class="title">getPackages</span><span class="params">()</span> </span>&#123;</span><br><span class="line">            <span class="keyword">return</span> Arrays.&lt;ReactPackage&gt;asList(</span><br><span class="line">                    <span class="keyword">new</span> MainReactPackage()</span><br><span class="line">            );</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> ReactNativeHost <span class="title">getReactNativeHost</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> mReactNativeHost;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onCreate</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">super</span>.onCreate();</span><br><span class="line">        SoLoader.init(<span class="keyword">this</span>,<span class="keyword">false</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>3、打包运行</p>
+<ul>
+<li>手动生成 bundle 文件<br>
+在 app/src/main 下新建 assets 目录，在终端窗口 Terminal 中执行：<br>
+react-native bundle --platform android --dev false–entry-file index.js --bundle-output app/src/main/assets/index.android.bundle–assets-dest app/src/main/res/<br>
+说明：<br>
+–platform：平台<br>
+–dev：开发模式<br>
+–entry-file：条目文件<br>
+–bundle-output：bundle 文件生成的目录<br>
+–assets-dest：资源文件生成的目录<br>
+执行完成后，会在 assets 目录下生成两个文件：index.android.bundle</li>
+<li>运行 app 即可看到效果</li>
+</ul>
+<h4 id="热更新"><a class="markdownIt-Anchor" href="#热更新"></a> 热更新</h4>
+<p>一、CodePush 热更新<br>
+CodePush server：<code>[http://www.code-push.com/](http://www.code-push.com/)</code><br>
+参考：<code>[https://www.jianshu.com/p/6a5e00d22723](https://www.jianshu.com/p/6a5e00d22723)</code></p>
+<p>二、pushy 进行热更新<br>
+参考：<code>[https://blog.csdn.net/xiangzhihong8/article/details/73201421](https://blog.csdn.net/xiangzhihong8/article/details/73201421)</code><br>
+参考文档：<code>[https://github.com/reactnativecn/react-native-pushy/blob/master/docs/guide.md](https://github.com/reactnativecn/react-native-pushy/blob/master/docs/guide.md)</code></p>
+<p>都是将 jsbundle 文件提交至对应的服务器上，都支持强制更新，动态更新，更新失败回滚，在各自项目中编写更新代码（不建议用弹窗提醒用户更新的方式，这样 iOS 审核会被拒）</p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/iOS/" rel="tag"># iOS</a>
+          
+            <a href="/tags/Android/" rel="tag"># Android</a>
+          
+            <a href="/tags/react-native/" rel="tag"># react native</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/08/04/MAC下安装Nginx/" rel="next" title="MAC下安装Nginx">
+                <i class="fa fa-chevron-left"></i> MAC下安装Nginx
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2019/09/13/iOS获取AppStore的ipa，以及包内资源/" rel="prev" title="iOS获取AppStore的ipa，以及包内资源">
+                iOS获取AppStore的ipa，以及包内资源 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+    <div class="comments" id="comments">
+      <div id="lv-container" data-id="city" data-uid="MTAyMC80NzI4My8yMzc4Mw=="></div>
+    </div>
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image" src="https://picture.cqzhong.cn/avatar.png" alt="曹庆中">
+            
+              <p class="site-author-name" itemprop="name">曹庆中</p>
+              <p class="site-description motion-element" itemprop="description">学如逆水行舟,不进则退。心似平原走马,易放难追。</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">73</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">7</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">47</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/cqzhong" target="_blank" title="GitHub">
+                      
+                        <i class="fa fa-fw fa-github"></i>GitHub</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="mailto:1024463782@qq.com" target="_blank" title="E-Mail">
+                      
+                        <i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="https://gitee.com/cqzhong" target="_blank" title="码云">
+                      
+                        <i class="fa fa-fw fa-google"></i>码云</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="http://picture.cqzhong.cn/Wechat.jpeg" target="_blank" title="微信">
+                      
+                        <i class="fa fa-fw fa-weixin"></i>微信</a>
+                  </span>
+                
+            </div>
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#一-背景"><span class="nav-number">1.</span> <span class="nav-text"> 一、背景</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#二-react-native-介绍"><span class="nav-number">2.</span> <span class="nav-text"> 二、React Native 介绍</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#三-react-native-的应用场景"><span class="nav-number">3.</span> <span class="nav-text"> 三、React Native 的应用场景</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#四-react-native-混合开发ios-篇"><span class="nav-number">4.</span> <span class="nav-text"> 四、React Native 混合开发（iOS 篇）</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#五-react-native-混合开发android-篇"><span class="nav-number">5.</span> <span class="nav-text"> 五、React Native 混合开发（Android 篇）</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#热更新"><span class="nav-number">6.</span> <span class="nav-text"> 热更新</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2020</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">曹庆中</span>
+
+  
+</div>
+
+
+  <div class="powered-by">豫ICP备19030079号</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">爱国敬业</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+    <script type="text/javascript">
+      (function(d, s) {
+        var j, e = d.getElementsByTagName(s)[0];
+        if (typeof LivereTower === 'function') { return; }
+        j = d.createElement(s);
+        j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+        j.async = true;
+        e.parentNode.insertBefore(j, e);
+      })(document, 'script');
+    </script>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url);
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+
+  
+<script>
+(function(){
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';        
+    }
+    else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
+
+
+  
+  
+
+  
+  
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+      });
+    </script>
+
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+      });
+    </script>
+    <script type="text/javascript" src="cdn.bootcss.com/mathjax/2.7.1/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+  
+
+
+  
+
+  
+
+<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"debug":false,"model":{"jsonPath":"/live2dw/assets/hijiki.model.json"},"display":{"position":"left","width":260,"height":420,"hOffset":0,"vOffset":100},"mobile":{"show":false,"scale":0.5},"log":false});</script></body>
+</html>
+
+<!-- <script type="text/javascript" src="/js/love_click.js"></script> -->
+

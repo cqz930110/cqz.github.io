@@ -1,0 +1,1277 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-Hans">
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="theme-color" content="#222">
+<meta name="referrer" content="no-referrer">
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="微信小程序,">
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="代码片段和问题总结">
+<meta name="keywords" content="微信小程序">
+<meta property="og:type" content="article">
+<meta property="og:title" content="微信小程序开发问题汇总">
+<meta property="og:url" content="https://www.cqzhong.cn/2019/10/29/微信小程序开发问题汇总/index.html">
+<meta property="og:site_name" content="cqzhong&#39;s blog">
+<meta property="og:description" content="代码片段和问题总结">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2020-10-19T13:21:19.990Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="微信小程序开发问题汇总">
+<meta name="twitter:description" content="代码片段和问题总结">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="https://www.cqzhong.cn/2019/10/29/微信小程序开发问题汇总/">
+
+
+
+
+
+  <title>微信小程序开发问题汇总 | cqzhong's blog</title>
+  
+
+
+
+
+
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?ee03412f14872b2f3cdc536eda6712c9";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">cqzhong's blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">曹庆中</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br>
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br>
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br>
+            
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off" placeholder="搜索..." spellcheck="false" type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://www.cqzhong.cn/2019/10/29/微信小程序开发问题汇总/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="曹庆中">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="https://picture.cqzhong.cn/avatar.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="cqzhong's blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">微信小程序开发问题汇总</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-10-29T20:01:38+08:00">
+                2019-10-29
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/前端/" itemprop="url" rel="index">
+                    <span itemprop="name">前端</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>代码片段和问题总结</p>
+<a id="more"></a>
+<h4 id="1-display"><a class="markdownIt-Anchor" href="#1-display"></a> 1、display</h4>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">display</span><br><span class="line">display属性</span><br><span class="line">none:此元素不会被显示</span><br><span class="line">block：两个元素自动换行</span><br><span class="line">inline：两个元素靠在一起</span><br><span class="line">inherit：继承父类</span><br><span class="line">flex：多栏多列</span><br><span class="line">flex-direction属性</span><br><span class="line">column垂直分布</span><br><span class="line">row水平分布</span><br><span class="line">align-items设置item对齐方式</span><br><span class="line">center</span><br><span class="line">left</span><br><span class="line">right</span><br></pre></td></tr></table></figure>
+<h4 id="2-flex"><a class="markdownIt-Anchor" href="#2-flex"></a> 2、flex</h4>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">flex-wrap:nowrap(即使排不下，也不换行)wrap:(换行)wrap-reverse(换行第一行在下面)</span><br><span class="line"></span><br><span class="line">justify-content:flex-start(水平左对齐)flex-end(水平右对齐)center(居中).space(两端对齐)space-around(等间距，边距是间距的1/2)</span><br><span class="line"></span><br><span class="line">align-item:stretch(填充整个容器)flex-start(侧轴的起点对齐)flex-end(侧轴终点对齐)center(侧轴的中居中)baseline(以子元素的第一行文字对齐)</span><br><span class="line"></span><br><span class="line">flex容器属性</span><br><span class="line">1、flex-direction设置容器内子元素即flex-item的排列方向。</span><br><span class="line">2、flex-warp设置容器内子元素是否换行。</span><br><span class="line">3、justify-content设置子元素在横轴(即x轴)的排列位置。</span><br><span class="line">4、align-item设置子元素在y轴的排列位置。</span><br><span class="line">5、align-content设置子元素在多个主轴线上排列的位置。</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">order、flex-grow、flex-shrink、flex-basis、align-self、displayflex。</span><br><span class="line"></span><br><span class="line">justify-content</span><br><span class="line">1、flex-start（水平居左对齐）</span><br><span class="line">2、flex-end（水平居右对齐）</span><br><span class="line">3、center（水平居中对齐）</span><br><span class="line">4、space-between（两端对齐、两端的子元素贴容器边、其他子元素之间的间隔相等）</span><br><span class="line">5、space-around（每个子元素的距离相等、两端的子元素距离容器的边距是元素之间间距的一半）</span><br></pre></td></tr></table></figure>
+<h4 id="3-image-使用"><a class="markdownIt-Anchor" href="#3-image-使用"></a> 3、image 使用</h4>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">image</span></span></span><br><span class="line"><span class="tag">  <span class="attr">mode</span>=<span class="string">"aspectFit"</span></span></span><br><span class="line"><span class="tag">  <span class="attr">hidden</span>=<span class="string">'&#123;&#123;(item.title == "昵称" || item.title == "我的签名") ? true : false&#125;&#125;'</span></span></span><br><span class="line"><span class="tag">  <span class="attr">class</span>=<span class="string">"mark-image"</span></span></span><br><span class="line"><span class="tag">  <span class="attr">src</span>=<span class="string">"../../../images/sanjiao@2x.png"</span></span></span><br><span class="line"><span class="tag">/&gt;</span></span><br></pre></td></tr></table></figure>
+<h4 id="4-overflow"><a class="markdownIt-Anchor" href="#4-overflow"></a> 4、overflow</h4>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">overflow：</span><br><span class="line">visible -默认值。内容不会被修剪，会呈现在元素框之外</span><br><span class="line">hidden-内容会被修剪，并且其余内容是不可见的。</span><br><span class="line">scroll-内容会被修剪，但是浏览器会显示滚动条以便查看其余的内容。</span><br><span class="line">auto-如果内容被修剪，则浏览器会显示滚动条以便查看其余的内容。</span><br><span class="line">inherit-规定应该从父元素继承 overflow 属性的值。</span><br></pre></td></tr></table></figure>
+<h4 id="5-wxfor-使用"><a class="markdownIt-Anchor" href="#5-wxfor-使用"></a> 5、wx:for 使用</h4>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">view</span></span></span><br><span class="line"><span class="tag">  <span class="attr">wx:for</span>=<span class="string">"&#123;&#123;searchRes&#125;&#125;"</span></span></span><br><span class="line"><span class="tag">  <span class="attr">wx:key</span>=<span class="string">"code"</span></span></span><br><span class="line"><span class="tag">  <span class="attr">class</span>=<span class="string">"citys-item bottom-border &#123;&#123;currentActive==='search'&amp;&amp;choosedCitys.code===item.code &amp;&amp; 'city-active'&#125;&#125;"</span></span></span><br><span class="line"><span class="tag">  <span class="attr">data-current-active</span>=<span class="string">"search"</span></span></span><br><span class="line"><span class="tag">  <span class="attr">data-choosed-citys</span>=<span class="string">"&#123;&#123;item&#125;&#125;"</span></span></span><br><span class="line"><span class="tag">  <span class="attr">catch:tap</span>=<span class="string">"setCity"</span></span></span><br><span class="line"><span class="tag">&gt;</span><span class="tag">&lt;/<span class="name">view</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<h4 id="6-模版的使用"><a class="markdownIt-Anchor" href="#6-模版的使用"></a> 6、模版的使用</h4>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">template</span></span></span><br><span class="line"><span class="tag">  <span class="attr">is</span>=<span class="string">"publishTopic"</span></span></span><br><span class="line"><span class="tag">  <span class="attr">data</span>=<span class="string">"&#123;&#123;topicArray : topicArray, topicIndex : topicIndex, topicFn : topicFn&#125;&#125;"</span></span></span><br><span class="line"><span class="tag">&gt;</span><span class="tag">&lt;/<span class="name">template</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">import</span> <span class="attr">src</span>=<span class="string">"../publishTopic/publishTopic.wxml"</span> /&gt;</span></span><br><span class="line"></span><br><span class="line">@import "../../../component/publishTopic/publishTopic.wxss";</span><br></pre></td></tr></table></figure>
+<h4 id="7-block-使用"><a class="markdownIt-Anchor" href="#7-block-使用"></a> 7、block 使用</h4>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">block</span> <span class="attr">wx:if</span>=<span class="string">"&#123;&#123;title == '执行中的项目'&#125;&#125;"</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">text</span> <span class="attr">class</span>=<span class="string">"offCodeNum"</span> <span class="attr">style</span>=<span class="string">"color: #732FC3"</span>&gt;</span>956<span class="tag">&lt;/<span class="name">text</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">block</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">block</span> <span class="attr">wx:else</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">text</span> <span class="attr">class</span>=<span class="string">"offCodeNum"</span>&gt;</span>956<span class="tag">&lt;/<span class="name">text</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">block</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<h4 id="8-画细线"><a class="markdownIt-Anchor" href="#8-画细线"></a> 8、画细线</h4>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.boder1px</span>&#123;</span><br><span class="line">  <span class="attribute">position</span>: relative;</span><br><span class="line">&#125;</span><br><span class="line"><span class="selector-class">.boder1px</span><span class="selector-pseudo">:after</span> &#123;</span><br><span class="line">  <span class="attribute">content</span>: <span class="string">" "</span>;</span><br><span class="line">  <span class="attribute">position</span>: absolute;</span><br><span class="line">  <span class="attribute">width</span>: <span class="number">100%</span>;</span><br><span class="line">  <span class="attribute">left</span>: <span class="number">0</span>;</span><br><span class="line">  <span class="attribute">bottom</span>: <span class="number">0</span>;</span><br><span class="line">  <span class="attribute">height</span>: <span class="number">1px</span>;</span><br><span class="line">  <span class="attribute">border-bottom</span>: <span class="number">1px</span> solid <span class="number">#E5E5E5</span>;</span><br><span class="line">  <span class="attribute">color</span>: <span class="number">#E5E5E5</span>;</span><br><span class="line">  <span class="attribute">-webkit-transform-origin</span>: <span class="number">0</span> <span class="number">100%</span>;</span><br><span class="line">  <span class="attribute">transform-origin</span>: <span class="number">0</span> <span class="number">100%</span>;</span><br><span class="line">  <span class="attribute">-webkit-transform</span>: <span class="built_in">scaleY</span>(0.5);</span><br><span class="line">  <span class="attribute">transform</span>: <span class="built_in">scaleY</span>(0.5);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">&lt;meta name="viewport" content="width=device-width,initial-scale=1.0,  maximum-scale=1.0, user-scalable=0"&gt; 加到head里</span><br></pre></td></tr></table></figure>
+<h4 id="9事件绑定"><a class="markdownIt-Anchor" href="#9事件绑定"></a> 9.事件绑定</h4>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line">// 事件绑定传值 设置 data-obj, 取 e.currentTarget.dataset.obj</span><br><span class="line"><span class="tag">&lt;<span class="name">view</span> <span class="attr">class</span>=<span class="string">"topic-selected"</span> <span class="attr">bindtap</span>=<span class="string">"&#123;&#123;topicFn&#125;&#125;"</span> <span class="attr">data-keyword</span>=<span class="string">"&#123;&#123;item&#125;&#125;"</span>&gt;</span></span><br><span class="line">  &#123;&#123;item&#125;&#125;</span><br><span class="line">  <span class="tag">&lt;<span class="name">image</span></span></span><br><span class="line"><span class="tag">    <span class="attr">class</span>=<span class="string">"topic-check-image"</span></span></span><br><span class="line"><span class="tag">    <span class="attr">src</span>=<span class="string">"../../../images/Check@2x.png"</span></span></span><br><span class="line"><span class="tag">    <span class="attr">mode</span>=<span class="string">"aspectFit"</span></span></span><br><span class="line"><span class="tag">  &gt;</span><span class="tag">&lt;/<span class="name">image</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">view</span>&gt;</span></span><br><span class="line"></span><br><span class="line">// let indexTag = e.currentTarget.dataset.keyword.id // tag</span><br><span class="line"><span class="tag">&lt;<span class="name">block</span> <span class="attr">wx:for</span>=<span class="string">"&#123;&#123;tagsArray&#125;&#125;"</span> <span class="attr">wx:key</span>=<span class="string">"item"</span> <span class="attr">wx:for-index</span>=<span class="string">"item.id"</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">block</span> <span class="attr">wx:if</span>=<span class="string">"&#123;&#123;item.id== indexTag&#125;&#125;"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">view</span></span></span><br><span class="line"><span class="tag">      <span class="attr">class</span>=<span class="string">"publish-tag-selected-item"</span></span></span><br><span class="line"><span class="tag">      <span class="attr">data-keyword</span>=<span class="string">"&#123;&#123;item&#125;&#125;"</span></span></span><br><span class="line"><span class="tag">      <span class="attr">bindtap</span>=<span class="string">"selectedByTag"</span></span></span><br><span class="line"><span class="tag">      &gt;</span>&#123;&#123;item.tagName&#125;&#125;<span class="tag">&lt;/<span class="name">view</span></span></span><br><span class="line"><span class="tag">    &gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">block</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">block</span> <span class="attr">wx:else</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">view</span></span></span><br><span class="line"><span class="tag">      <span class="attr">class</span>=<span class="string">"publish-tag-item"</span></span></span><br><span class="line"><span class="tag">      <span class="attr">data-keyword</span>=<span class="string">"&#123;&#123;item&#125;&#125;"</span></span></span><br><span class="line"><span class="tag">      <span class="attr">bindtap</span>=<span class="string">"selectedByTag"</span></span></span><br><span class="line"><span class="tag">      &gt;</span>&#123;&#123;item.tagName&#125;&#125;<span class="tag">&lt;/<span class="name">view</span></span></span><br><span class="line"><span class="tag">    &gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">block</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">block</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<h4 id="10-返回上级界面携带参数"><a class="markdownIt-Anchor" href="#10-返回上级界面携带参数"></a> 10、返回上级界面，携带参数</h4>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> pages = getCurrentPages();</span><br><span class="line"><span class="keyword">var</span> currPage = pages[pages.length - <span class="number">1</span>]; <span class="comment">// 当前页面</span></span><br><span class="line"><span class="keyword">var</span> prevPage = pages[pages.length - <span class="number">2</span>]; <span class="comment">// 上一个页面</span></span><br><span class="line"></span><br><span class="line">prevPage.setData(&#123;</span><br><span class="line">  linkSource: obj.link,</span><br><span class="line">  isChangeSource: <span class="literal">true</span>,</span><br><span class="line">&#125;); <span class="comment">// 给上级页面的变量赋值</span></span><br><span class="line">wx.navigateBack(&#123;</span><br><span class="line">  delta: <span class="number">1</span>,</span><br><span class="line">&#125;); <span class="comment">// 返回上级页面</span></span><br></pre></td></tr></table></figure>
+<h4 id="11-重定向一个页面携带参数"><a class="markdownIt-Anchor" href="#11-重定向一个页面携带参数"></a> 11、重定向一个页面，携带参数</h4>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">wx.redirectTo(&#123;</span><br><span class="line">  url:</span><br><span class="line">    <span class="string">"../read?bookId="</span> + <span class="keyword">this</span>.data.bookId + <span class="string">"&amp;bookTitle="</span> + <span class="keyword">this</span>.data.bookTitle,</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<h4 id="12-微信小程序-页面隐藏导航栏"><a class="markdownIt-Anchor" href="#12-微信小程序-页面隐藏导航栏"></a> 12、微信小程序 页面隐藏导航栏</h4>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">"navigationStyle" : "custom"</span><br></pre></td></tr></table></figure>
+<h4 id="13-微信小程序绑定两个方法"><a class="markdownIt-Anchor" href="#13-微信小程序绑定两个方法"></a> 13、微信小程序，绑定两个方法</h4>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">view</span></span></span><br><span class="line"><span class="tag">  <span class="attr">class</span>=<span class="string">"button"</span></span></span><br><span class="line"><span class="tag">  <span class="attr">bindtap</span>=<span class="string">"&#123;&#123;isContain ? 'removeABookcase' :  'addABookcase'&#125;&#125;"</span></span></span><br><span class="line"><span class="tag">&gt;</span><span class="tag">&lt;/<span class="name">view</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<h4 id="14-组件-component-使用"><a class="markdownIt-Anchor" href="#14-组件-component-使用"></a> 14、组件 Component 使用</h4>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">// 查看书籍详情 methods: &#123; viewBookDetail: function (e) &#123; var bookId =</span><br><span class="line">e.currentTarget.dataset.id this.triggerEvent("viewBookDetail", &#123;bookId&#125;) &#125; &#125;</span><br><span class="line">"usingComponents": &#123; "bookList": "/component/bookList/bookList" &#125;</span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">bookList</span></span></span><br><span class="line"><span class="tag">  <span class="attr">list</span>=<span class="string">"&#123;&#123;list&#125;&#125;"</span></span></span><br><span class="line"><span class="tag">  <span class="attr">isLoadmore</span>=<span class="string">"&#123;&#123;isLoadmore&#125;&#125;"</span></span></span><br><span class="line"><span class="tag">  <span class="attr">bindloadMore</span>=<span class="string">"loadRankListRequest"</span></span></span><br><span class="line"><span class="tag">  <span class="attr">bindviewBookDetail</span>=<span class="string">"viewBookDetail"</span></span></span><br><span class="line"><span class="tag">  <span class="attr">showLoad</span>=<span class="string">"&#123;&#123;showLoad&#125;&#125;"</span></span></span><br><span class="line"><span class="tag">/&gt;</span></span><br></pre></td></tr></table></figure>
+<h4 id="15-data-赋值时候一定要小写写大写也会被转为小写-取值取不出来"><a class="markdownIt-Anchor" href="#15-data-赋值时候一定要小写写大写也会被转为小写-取值取不出来"></a> 15、data- 赋值时候一定要小写，写大写也会被转为小写。取值取不出来</h4>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">view</span></span></span><br><span class="line"><span class="tag">  <span class="attr">class</span>=<span class="string">"cell-comment"</span></span></span><br><span class="line"><span class="tag">  <span class="attr">catchtap</span>=<span class="string">"onClickCommentEvent"</span></span></span><br><span class="line"><span class="tag">  <span class="attr">data-title</span>=<span class="string">"&#123;&#123;item.title&#125;&#125;"</span></span></span><br><span class="line"><span class="tag">  <span class="attr">data-pid</span>=<span class="string">"&#123;&#123;item.productionId&#125;&#125;"</span></span></span><br><span class="line"><span class="tag">  <span class="attr">data-userId</span>=<span class="string">"&#123;&#123;item.userId&#125;&#125;"</span></span></span><br><span class="line"><span class="tag">  &gt;</span>（错误，应该为小写data-userid）<span class="tag">&lt;/<span class="name">view</span></span></span><br><span class="line"><span class="tag">&gt;</span></span><br></pre></td></tr></table></figure>
+<h4 id="16-继承"><a class="markdownIt-Anchor" href="#16-继承"></a> 16、继承</h4>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">inherits</span>(<span class="params">Child, Parent</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">var</span> F = <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;&#125;;</span><br><span class="line">  F.prototype = Parent.prototype;</span><br><span class="line">  Child.prototype = <span class="keyword">new</span> F();</span><br><span class="line">  Child.prototype.constructor = Child;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Student</span> </span>&#123;</span><br><span class="line">  <span class="keyword">constructor</span>(name) &#123;</span><br><span class="line">    <span class="keyword">this</span>.name = name;</span><br><span class="line">  &#125;</span><br><span class="line">  hello() &#123;&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">PrimaryStudent</span> <span class="keyword">extends</span> <span class="title">Student</span> </span>&#123;</span><br><span class="line">  <span class="keyword">constructor</span>(name, grade) &#123;</span><br><span class="line">    <span class="keyword">super</span>(name); <span class="comment">// 记得用super调用父类的构造方法!</span></span><br><span class="line">    <span class="keyword">this</span>.grade = grade;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  myGrade() &#123;</span><br><span class="line">    alert(<span class="string">"I am at grade "</span> + <span class="keyword">this</span>.grade);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="17-渐隐效果"><a class="markdownIt-Anchor" href="#17-渐隐效果"></a> 17、渐隐效果</h4>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.poetry_box</span><span class="selector-pseudo">::after</span> &#123;</span><br><span class="line">  <span class="attribute">content</span>: <span class="string">""</span>;</span><br><span class="line">  <span class="attribute">display</span>: block;</span><br><span class="line">  <span class="attribute">width</span>: <span class="number">100%</span>;</span><br><span class="line">  <span class="attribute">height</span>: <span class="number">100</span>rpx;</span><br><span class="line">  <span class="attribute">position</span>: absolute;</span><br><span class="line">  <span class="attribute">left</span>: <span class="number">0</span>;</span><br><span class="line">  <span class="attribute">bottom</span>: <span class="number">0</span>rpx;</span><br><span class="line">  <span class="attribute">background-image</span>: <span class="built_in">linear-gradient</span>(</span><br><span class="line">    -180deg,</span><br><span class="line">    rgba(255, 255, 255, 0) <span class="number">0%</span>,</span><br><span class="line">    <span class="number">#fff</span> <span class="number">100%</span></span><br><span class="line">  );</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="18-微信小程序字体引入外部字体注意是-https"><a class="markdownIt-Anchor" href="#18-微信小程序字体引入外部字体注意是-https"></a> 18、微信小程序字体引入外部字体(注意是 https)</h4>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">@<span class="keyword">font-face</span> &#123;</span><br><span class="line">  <span class="attribute">font-family</span>: <span class="string">"fz-mw-sf"</span>;</span><br><span class="line">  <span class="attribute">src</span>: <span class="built_in">url</span>(<span class="string">"https://statics.zhuishushenqi.com/fonts/fz-mw-sf.ttf"</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="selector-class">.read_body</span> &#123;</span><br><span class="line">  <span class="attribute">font-size</span>: <span class="number">16px</span>;</span><br><span class="line">  <span class="attribute">text-indent</span>: <span class="number">28px</span>;</span><br><span class="line">  <span class="attribute">line-height</span>: <span class="number">40px</span>;</span><br><span class="line">  <span class="attribute">font-family</span>: <span class="string">"fz-mw-sf"</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="19-hidden-只能对块级元素无效-改为-displaynone"><a class="markdownIt-Anchor" href="#19-hidden-只能对块级元素无效-改为-displaynone"></a> 19、hidden 只能对块级元素无效 改为 display:none</h4>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.rank_sort</span> &#123;</span><br><span class="line">  <span class="attribute">text-align</span>: center;</span><br><span class="line">  <span class="attribute">vertical-align</span>: middle;</span><br><span class="line">  <span class="attribute">height</span>: <span class="number">40</span>rpx;</span><br><span class="line">  <span class="attribute">position</span>: relative;</span><br><span class="line">  <span class="attribute">font-size</span>: <span class="number">28</span>rpx;</span><br><span class="line">  <span class="attribute">color</span>: <span class="number">#b0b3ba</span>;</span><br><span class="line"></span><br><span class="line">  &amp;:before &#123;</span><br><span class="line">    <span class="selector-tag">content</span>: " ";</span><br><span class="line">    <span class="selector-tag">width</span>: 38<span class="selector-tag">rpx</span>;</span><br><span class="line">    <span class="selector-tag">border-bottom</span>: 1<span class="selector-tag">px</span> <span class="selector-tag">solid</span> <span class="selector-id">#b0b3ba</span>;</span><br><span class="line">    <span class="selector-tag">position</span>: <span class="selector-tag">absolute</span>;</span><br><span class="line">    <span class="selector-tag">left</span>: 24%;</span><br><span class="line">    <span class="selector-tag">top</span>: 50%;</span><br><span class="line">    <span class="selector-tag">transform</span>: <span class="selector-tag">translateX</span>(<span class="selector-tag">-50</span>%, <span class="selector-tag">-24</span>%);</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  &amp;<span class="selector-pseudo">:after</span> &#123;</span><br><span class="line">    <span class="attribute">content</span>: <span class="string">" "</span>;</span><br><span class="line">    <span class="attribute">width</span>: <span class="number">38</span>rpx;</span><br><span class="line">    <span class="attribute">border-bottom</span>: <span class="number">1px</span> solid <span class="number">#b0b3ba</span>;</span><br><span class="line">    <span class="attribute">position</span>: absolute;</span><br><span class="line">    <span class="attribute">right</span>: <span class="number">24%</span>;</span><br><span class="line">    <span class="attribute">top</span>: <span class="number">50%</span>;</span><br><span class="line">    <span class="attribute">transform</span>: <span class="built_in">translateX</span>(-50%, -24%);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="20-解析构造"><a class="markdownIt-Anchor" href="#20-解析构造"></a> 20、解析构造</h4>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> &#123; boxList, current &#125; = <span class="keyword">this</span>.data;</span><br></pre></td></tr></table></figure>
+<h4 id="21-修改数据源"><a class="markdownIt-Anchor" href="#21-修改数据源"></a> 21、修改数据源</h4>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> share_list = <span class="keyword">this</span>.data.share_list,</span><br><span class="line">  idx = e.currentTarget.dataset.idx;</span><br><span class="line">share_list[idx].share_praise_status = !share_list[idx].share_praise_status;</span><br><span class="line">share_list[idx].share_praise_count = share_list[idx].share_praise_status</span><br><span class="line">  ? share_list[idx].share_praise_count + <span class="number">1</span></span><br><span class="line">  : share_list[idx].share_praise_count - <span class="number">1</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> account = <span class="keyword">this</span>.data.account;</span><br><span class="line"></span><br><span class="line">account.praise_count = share_list[idx].share_praise_status</span><br><span class="line">  ? account.praise_count + <span class="number">1</span></span><br><span class="line">  : account.praise_count - <span class="number">1</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">this</span>.setData(&#123;</span><br><span class="line">  share_list: share_list,</span><br><span class="line">  account: account,</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<h4 id="22-事件冒泡"><a class="markdownIt-Anchor" href="#22-事件冒泡"></a> 22、事件冒泡</h4>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">微信小程序 阻止冒泡事件</span><br><span class="line">事情的bind 改成 catch</span><br><span class="line">bind 是阻止不了冒泡的</span><br><span class="line">例如 bindtap 改成 catchtap</span><br></pre></td></tr></table></figure>
+<h4 id="23"><a class="markdownIt-Anchor" href="#23"></a> 23</h4>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">hidden 对于 flex布局无效。</span><br><span class="line">padding是自身属性，点击区域加大</span><br></pre></td></tr></table></figure>
+<h4 id="24-error"><a class="markdownIt-Anchor" href="#24-error"></a> 24、error</h4>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">警告</span><br><span class="line">Do not have EventHandle handler in current page: pages/user/user. Please make sure that EventHandle handler has been defined in pages/user/user, or pages/user/user has been added into app.json</span><br><span class="line">各种网络回答app.json排序，未解决，后发现是wxml里。有个catchtouchmove方法在js内没执行</span><br></pre></td></tr></table></figure>
+<h4 id="25-不换行"><a class="markdownIt-Anchor" href="#25-不换行"></a> 25、不换行</h4>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">// 不换行</span><br><span class="line"><span class="selector-tag">overflow</span>: <span class="selector-tag">hidden</span>;</span><br><span class="line"><span class="selector-tag">text-overflow</span>: <span class="selector-tag">ellipsis</span>;</span><br><span class="line"><span class="selector-tag">white-space</span>: <span class="selector-tag">nowrap</span>;</span><br><span class="line"></span><br><span class="line">// 换行</span><br><span class="line"><span class="selector-tag">word-break</span>: <span class="selector-tag">keep-all</span>;</span><br><span class="line"><span class="selector-tag">word-wrap</span>: <span class="selector-tag">break-word</span>;</span><br><span class="line"><span class="selector-tag">text-align</span>: <span class="selector-tag">justify</span>;</span><br></pre></td></tr></table></figure>
+<h4 id="26-api"><a class="markdownIt-Anchor" href="#26-api"></a> 26、API</h4>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">wx.createSelectorQuery().select('#canvas-container').boundingClientRect(function(rect)&#123;</span><br><span class="line">&#125;).exec()</span><br></pre></td></tr></table></figure>
+<h4 id="27"><a class="markdownIt-Anchor" href="#27"></a> 27</h4>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">wx.getSystemInfo(&#123;</span><br><span class="line">  success: <span class="function"><span class="keyword">function</span> (<span class="params">res</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">let</span> height = res.statusBarHeight + (res.platform === <span class="string">"ios"</span> ? <span class="number">44</span> : <span class="number">48</span>);</span><br><span class="line">    <span class="keyword">let</span> rule = <span class="number">750</span> / res.windowWidth;</span><br><span class="line">    height = height * rule;</span><br><span class="line"></span><br><span class="line">    that.setData(&#123;</span><br><span class="line">      platform: res.platform,</span><br><span class="line">      navHeight: height,</span><br><span class="line">    &#125;);</span><br><span class="line">  &#125;,</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<h5 id="28-自定义顶层弹窗"><a class="markdownIt-Anchor" href="#28-自定义顶层弹窗"></a> 28、自定义顶层弹窗</h5>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.mask_box</span> &#123;</span><br><span class="line">  <span class="attribute">width</span>: <span class="number">100%</span>;</span><br><span class="line">  <span class="attribute">height</span>: <span class="number">100%</span>;</span><br><span class="line">  <span class="attribute">position</span>: fixed;</span><br><span class="line">  <span class="attribute">top</span>: <span class="number">0</span>;</span><br><span class="line">  <span class="attribute">left</span>: <span class="number">0</span>;</span><br><span class="line">  <span class="attribute">right</span>: <span class="number">0</span>;</span><br><span class="line">  <span class="attribute">bottom</span>: <span class="number">0</span>;</span><br><span class="line">  <span class="attribute">background-color</span>: <span class="built_in">rgba</span>(0, 0, 0, 0.5);</span><br><span class="line">  <span class="attribute">z-index</span>: <span class="number">9999</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="29-wxdownloadfile"><a class="markdownIt-Anchor" href="#29-wxdownloadfile"></a> 29、wx.downloadFile</h4>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 下载</span></span><br><span class="line">wx.downloadFile(&#123;</span><br><span class="line">  url: obj.backgroundImageUrl,</span><br><span class="line">  success: <span class="function">(<span class="params">res</span>) =&gt;</span> &#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">"success:"</span> + <span class="built_in">JSON</span>.stringify(res, <span class="literal">null</span>, <span class="string">""</span>));</span><br><span class="line">    <span class="keyword">if</span> (res.statusCode == <span class="number">200</span>) &#123;</span><br><span class="line">      <span class="keyword">this</span>.setData(&#123; <span class="attr">poster_bg</span>: res.tempFilePath &#125;);</span><br><span class="line">      <span class="built_in">console</span>.log(<span class="string">"\n\n\n成功:"</span> + <span class="keyword">this</span>.data.poster_bg);</span><br><span class="line">      <span class="keyword">this</span>.trimData(obj);</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">      <span class="built_in">console</span>.log(<span class="string">"\n\n\n失败"</span>);</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;,</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<h4 id="30"><a class="markdownIt-Anchor" href="#30"></a> 30</h4>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 替换字符串</span></span><br><span class="line"><span class="keyword">let</span> text = posterInfo.text;</span><br><span class="line"></span><br><span class="line"><span class="comment">// text=text.replace(/，\n|。\n|！\n|？\n|；\n/g,'\n')</span></span><br><span class="line"><span class="comment">// 去除 符号+换行</span></span><br><span class="line">text = text.replace(<span class="regexp">/，\n/g</span>, <span class="string">`，`</span>);</span><br><span class="line">text = text.replace(<span class="regexp">/；\n/g</span>, <span class="string">`；`</span>);</span><br><span class="line">text = text.replace(<span class="regexp">/？\n/g</span>, <span class="string">`？`</span>);</span><br><span class="line">text = text.replace(<span class="regexp">/！\n/g</span>, <span class="string">`！`</span>);</span><br><span class="line">text = text.replace(<span class="regexp">/。\n/g</span>, <span class="string">`。`</span>);</span><br><span class="line"></span><br><span class="line">text = text.replace(<span class="regexp">/，/g</span>, <span class="string">`，<span class="subst">$&#123;mark&#125;</span>`</span>);</span><br><span class="line">text = text.replace(<span class="regexp">/；/g</span>, <span class="string">`；<span class="subst">$&#123;mark&#125;</span>`</span>);</span><br><span class="line">text = text.replace(<span class="regexp">/？/g</span>, <span class="string">`？<span class="subst">$&#123;mark&#125;</span>`</span>);</span><br><span class="line">text = text.replace(<span class="regexp">/！/g</span>, <span class="string">`！<span class="subst">$&#123;mark&#125;</span>`</span>);</span><br><span class="line">text = text.replace(<span class="regexp">/。/g</span>, <span class="string">`。<span class="subst">$&#123;mark&#125;</span>`</span>);</span><br><span class="line"></span><br><span class="line">text = text.replace(<span class="regexp">/[\r\n]/g</span>, mark);</span><br></pre></td></tr></table></figure>
+<h4 id="31-canvas"><a class="markdownIt-Anchor" href="#31-canvas"></a> 31、canvas</h4>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// canvas fillText、left, right, center 代表起始点的位置，</span></span><br><span class="line"></span><br><span class="line">ctx.textAlign = <span class="string">"right"</span>;</span><br><span class="line">ctx.fillText(<span class="string">`——《<span class="subst">$&#123;info.title&#125;</span>》`</span>, <span class="keyword">this</span>.rpxTopx(<span class="number">695</span>), tH + <span class="keyword">this</span>.rpxTopx(<span class="number">8</span>), <span class="keyword">this</span>.rpxTopx(<span class="number">640</span>))</span><br><span class="line"></span><br><span class="line">ctx.textAlign = <span class="string">"left"</span>;</span><br><span class="line">ctx.fillText(<span class="string">`——《<span class="subst">$&#123;info.title&#125;</span>》`</span>, <span class="keyword">this</span>.rpxTopx(<span class="number">55</span>), tH + <span class="keyword">this</span>.rpxTopx(<span class="number">8</span>), <span class="keyword">this</span>.rpxTopx(<span class="number">640</span>))</span><br><span class="line"></span><br><span class="line">所谓的left、right、center指的是定位参考点的位置</span><br><span class="line">right表示，以整段文字的最右侧作为定位点，然后这个点的位置位于上面所定义的<span class="number">120</span>px（横向）位置</span><br></pre></td></tr></table></figure>
+<h4 id="31-canvas-drawimage"><a class="markdownIt-Anchor" href="#31-canvas-drawimage"></a> 31、 canvas drawImage</h4>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">![canvas</span><br><span class="line">drawImage](https://cqz-1256838880.cos.ap-shanghai.myqcloud.com/canvas_drawImage.jpeg)</span><br></pre></td></tr></table></figure>
+<h4 id="32-calc-函数"><a class="markdownIt-Anchor" href="#32-calc-函数"></a> 32. calc() 函数</h4>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br></pre></td><td class="code"><pre><span class="line">vh/vw</span><br><span class="line">　　vh: 相对于视窗的高度, 视窗被均分为100单位的vh;</span><br><span class="line">　　vw: 相对于视窗的宽度, 视窗被均分为100单位的vw;</span><br><span class="line"></span><br><span class="line">　　vmax: 相对于视窗的宽度或高度中较大的那个。其中最大的那个被均分为100单位的vmax;</span><br><span class="line">　　vmin: 相对于视窗的宽度或高度中较小的那个。其中最小的那个被均分为100单位的vmin;</span><br><span class="line">　　视区所指为浏览器内部的可视区域大小，</span><br><span class="line">　　即window.innerWidth/window.innerHeight大小，不包含任务栏标题栏以及底部工具栏的浏览器区域大小。</span><br><span class="line"></span><br><span class="line">calc</span><br><span class="line">　　calc是英文单词calculate(计算)的缩写，是css3的一个新增的功能，用来指定元素的长度。比如说，你可以使用calc()给元素的border、margin、pading、font-size和width等属性设置动态值。为何说是动态值呢?因为我们使用的表达式来得到的值。不过calc()最大的好处就是用在流体布局上，可以通过calc()计算得到元素的宽度。</span><br><span class="line"></span><br><span class="line">　　calc是 css3提供的一个在css文件中计算值的函数：</span><br><span class="line"></span><br><span class="line">用于动态计算长度值。</span><br><span class="line">需要注意的是，运算符前后都需要保留一个空格，例如：width: calc(100% - 10px)；</span><br><span class="line">任何长度值都可以使用calc()函数进行计算；</span><br><span class="line">calc()函数支持 “+”, “-“, “*”, “/” 运算；</span><br><span class="line">calc()函数使用标准的数学运算优先级规则；</span><br><span class="line"></span><br><span class="line">calc(100vh - 10px)  表示整个浏览器窗口高度减去10px的大小</span><br><span class="line">calc(100vw - 10px)   表示整个浏览器窗口宽度减去10px的大小</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">scroll-view &#123;</span><br><span class="line">  height: calc(~&quot;100vh - 496rpx&quot;);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">position:absolute;</span><br><span class="line">left:50px;</span><br><span class="line">width: calc(100%-100px);</span><br><span class="line"></span><br><span class="line">.user-hd&#123;</span><br><span class="line">  width: 100%;</span><br><span class="line">  min-height: 400rpx;</span><br><span class="line">  background-color: #ffffff;</span><br><span class="line">  padding: 30rpx 20rpx;</span><br><span class="line">&#125;</span><br><span class="line">.user-hd .hd-left&#123;</span><br><span class="line">  width: 100rpx;</span><br><span class="line">  height: 100rpx;</span><br><span class="line">&#125;</span><br><span class="line">.user-hd .hd-right&#123;</span><br><span class="line">  width: calc(100% - 100rpx);</span><br><span class="line">  height: 100rpx;</span><br><span class="line">  padding-left: 20rpx;</span><br><span class="line">  position: relative;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="33-对齐"><a class="markdownIt-Anchor" href="#33-对齐"></a> 33. 对齐</h4>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br></pre></td><td class="code"><pre><span class="line">1、 元素居中对齐 如 div</span><br><span class="line">  display: block;</span><br><span class="line">  margin: auto;</span><br><span class="line"></span><br><span class="line">2、文本居中对齐</span><br><span class="line"></span><br><span class="line">   text-align:center;</span><br><span class="line"></span><br><span class="line">3、图片居中对齐</span><br><span class="line">   要让图片居中对齐，可以使用margin: auto; 并将它放到 块 元素中</span><br><span class="line"></span><br><span class="line">   display:block;</span><br><span class="line">   margin:auto;</span><br><span class="line">   width: 40%;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">4、左右居中对齐-使用定位方式 配合margin，padding</span><br><span class="line"></span><br><span class="line">   position: absolute;</span><br><span class="line"></span><br><span class="line">5、左右对齐还可以使用 float</span><br><span class="line"></span><br><span class="line">   float:right;</span><br><span class="line">   padding:10px;</span><br><span class="line"></span><br><span class="line">6、垂直居中对齐-使用padding</span><br><span class="line"></span><br><span class="line">   padding:70px 0;</span><br><span class="line">   border: 3px solid green;</span><br><span class="line">   text-align:center;</span><br><span class="line"></span><br><span class="line">7、垂直居中 使用line-height 配合 height</span><br><span class="line"></span><br><span class="line">8、垂直居中 使用position 配合 transform</span><br><span class="line"></span><br><span class="line">   margin: 0;</span><br><span class="line">   position: absolute;</span><br><span class="line">   top: 50%;</span><br><span class="line">   left: 50%;</span><br><span class="line">   transform: translate(-50%, -50%);</span><br><span class="line"></span><br><span class="line">9、居中垂直对齐 使用flex</span><br><span class="line">  display: flex;</span><br><span class="line">  justify-content: center;</span><br><span class="line">  align-items: center;</span><br></pre></td></tr></table></figure>
+<h4 id="34-箭头函数"><a class="markdownIt-Anchor" href="#34-箭头函数"></a> 34、 箭头函数</h4>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 1、</span></span><br><span class="line"><span class="keyword">let</span> p1 = <span class="keyword">new</span> <span class="built_in">Promise</span>(<span class="function">(<span class="params">resolve, reject</span>) =&gt;</span> &#123;</span><br><span class="line">  <span class="keyword">if</span> (!util.isNullString(obj.headImgUrl)) &#123;</span><br><span class="line">    wx.downloadFile(&#123;</span><br><span class="line">      url: obj.headImgUrl,</span><br><span class="line">      success: <span class="function">(<span class="params">res</span>) =&gt;</span> &#123;</span><br><span class="line">        <span class="keyword">if</span> (res.statusCode === <span class="number">200</span>)</span><br><span class="line">          <span class="keyword">this</span>.setData(&#123; <span class="attr">poster_avater</span>: res.tempFilePath &#125;);</span><br><span class="line">        <span class="keyword">else</span> <span class="keyword">this</span>.setData(&#123; <span class="attr">poster_avater</span>: <span class="string">""</span> &#125;);</span><br><span class="line">        resolve();</span><br><span class="line">      &#125;,</span><br><span class="line">    &#125;);</span><br><span class="line">  &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">    <span class="keyword">this</span>.setData(&#123; <span class="attr">poster_avater</span>: <span class="string">""</span> &#125;);</span><br><span class="line">    resolve();</span><br><span class="line">  &#125;</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 头像，背景,二维码</span></span><br><span class="line"><span class="built_in">Promise</span>.all([p1, p2, p3]).then(<span class="function">(<span class="params">res</span>) =&gt;</span> &#123;</span><br><span class="line">  <span class="keyword">this</span>.trimData(obj);</span><br><span class="line">  <span class="keyword">let</span> options = &#123; <span class="attr">puid</span>: obj.userId, <span class="attr">id</span>: obj.productionId &#125;;</span><br><span class="line">  <span class="keyword">this</span>.shareClick(options);</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 2、</span></span><br><span class="line">setTimeout(<span class="function"><span class="params">()</span> =&gt;</span> &#123;</span><br><span class="line">  wx.hideLoading();</span><br><span class="line">  <span class="keyword">this</span>.savePoster();</span><br><span class="line">&#125;, <span class="number">300</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 3、</span></span><br><span class="line"><span class="keyword">var</span> countdownInterval = <span class="literal">null</span>;</span><br><span class="line">clearInterval(countdownInterval);</span><br><span class="line"></span><br><span class="line">countdownInterval = setInterval(<span class="function"><span class="params">()</span> =&gt;</span> &#123;</span><br><span class="line">  t -= <span class="number">1000</span>;</span><br><span class="line">  <span class="keyword">let</span> count = util.countdown(t);</span><br><span class="line"></span><br><span class="line">  <span class="keyword">this</span>.setData(&#123;</span><br><span class="line">    time: count,</span><br><span class="line">  &#125;);</span><br><span class="line">&#125;, <span class="number">1000</span>);</span><br></pre></td></tr></table></figure>
+<h4 id="35-动态设置-tabbar"><a class="markdownIt-Anchor" href="#35-动态设置-tabbar"></a> 35、动态设置 tabbar</h4>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">wx.setTabBarItem(&#123;</span><br><span class="line">  index: <span class="number">0</span>,</span><br><span class="line">  text: <span class="string">"text"</span>,</span><br><span class="line">  iconPath: <span class="string">"/path/to/iconPath"</span>,</span><br><span class="line">  selectedIconPath: <span class="string">"/path/to/selectedIconPath"</span>,</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<h4 id="36-获取微信头像昵称不需要授权"><a class="markdownIt-Anchor" href="#36-获取微信头像昵称不需要授权"></a> 36、获取微信头像，昵称(不需要授权)</h4>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">// 微信头像</span><br><span class="line"><span class="tag">&lt;<span class="name">open-data</span> <span class="attr">type</span>=<span class="string">"userAvatarUrl"</span>&gt;</span><span class="tag">&lt;/<span class="name">open-data</span>&gt;</span></span><br><span class="line"></span><br><span class="line">// 微信昵称</span><br><span class="line"><span class="tag">&lt;<span class="name">open-data</span> <span class="attr">type</span>=<span class="string">"userNickName"</span>&gt;</span><span class="tag">&lt;/<span class="name">open-data</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<h4 id="37-微信小程序字数限制"><a class="markdownIt-Anchor" href="#37-微信小程序字数限制"></a> 37、微信小程序字数限制</h4>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">input</span></span></span><br><span class="line"><span class="tag">  <span class="attr">placeholder-class</span>=<span class="string">"boder1px_input"</span></span></span><br><span class="line"><span class="tag">  <span class="attr">bindinput</span>=<span class="string">"textChange"</span></span></span><br><span class="line"><span class="tag">  <span class="attr">type</span>=<span class="string">"text"</span></span></span><br><span class="line"><span class="tag">  <span class="attr">data-name</span>=<span class="string">"introduction"</span></span></span><br><span class="line"><span class="tag">  <span class="attr">placeholder</span>=<span class="string">"请输入班级情况"</span></span></span><br><span class="line"><span class="tag">  <span class="attr">value</span>=<span class="string">"&#123;&#123;introText&#125;&#125;"</span></span></span><br><span class="line"><span class="tag">  <span class="attr">name</span>=<span class="string">"introduction"</span></span></span><br><span class="line"><span class="tag">/&gt;</span></span><br><span class="line"></span><br><span class="line">textChange: function (e) &#123; if (e.currentTarget.dataset.name != 'introduction')</span><br><span class="line">return let wordNum = e.detail.value.length, introText = e.detail.value if</span><br><span class="line">(wordNum &gt; 40) &#123; introText = introText.substring(0, 40) wordNum =</span><br><span class="line">introText.length &#125; this.setData(&#123; introText : introText, wordNum: wordNum &#125;) &#125;,</span><br></pre></td></tr></table></figure>
+<h4 id="38-页面传参对象"><a class="markdownIt-Anchor" href="#38-页面传参对象"></a> 38、页面传参对象</h4>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> item = <span class="built_in">JSON</span>.stringify(<span class="keyword">this</span>.data.selectedItem);</span><br><span class="line"></span><br><span class="line">wx.navigateTo(&#123;</span><br><span class="line">  url: <span class="string">`../add/index?item=<span class="subst">$&#123;<span class="built_in">encodeURIComponent</span>(item)&#125;</span>`</span>,</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> (options.item) &#123;</span><br><span class="line">  <span class="keyword">let</span> item = <span class="built_in">JSON</span>.parse(<span class="built_in">decodeURIComponent</span>(options.item));</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="39-路由跳转"><a class="markdownIt-Anchor" href="#39-路由跳转"></a> 39、路由跳转</h4>
+<ul>
+<li>wx.redirectTo 当页面过多时，被保留页面会挤占微信分配给小程序的内存，或是达到微信所限制的 5 层页面栈。这时，我们应该考虑选择 wx.redirectTo。wx.redirectTo()用于关闭当前页面，跳转到应用内的某个页面。这样的跳转，可以避免跳转前页面占据运行内存，但返回时页面需要重新加载，增加了返回页面的显示时间。</li>
+<li>wx.reLaunch wx.reLaunch()与 wx.redirectTo()的用途基本相同， 只是 wx.reLaunch()先关闭了内存中所有保留的页面，再跳转到目标页面。</li>
+<li>wx.navigateTo 用于保留当前页面、跳转到应用内的某个页面，使用 wx.navigateBack 可以返回到原页面。对于页面不是特别多的小程序，通常推荐使用 wx.navigateTo 进行跳转， 以便返回原页面，以提高加载速度。当页面特别多时，则不推荐使用。</li>
+<li>wx.switchTab 对于跳转到 tab bar 的页面，最好选择 wx.switchTab()，它会先关闭所有非 tab bar 的页面。其次，也可以选择 wx.reLaunch()，它也能实现从非 tab bar 跳转到 tab bar，或在 tab bar 间跳转，效果等同 wx.switchTab()。使用其他跳转 API 来跳转到 tab bar，则会跳转失败。</li>
+<li>wx.navigateBack 用于关闭当前页面，并返回上一页面或多级页面。开发者可通过 getCurrentPages() 获取当前的页面栈，决定需要返回几层。这个 API 需要填写的参数只有 delta，表示要返回的页面数。若 delta 的取值大于现有可返回页面数时，则返回到用户进入小程序的第一个页面。当不填写 delta 的值时，就默认其为 1（注意，默认并非取 0），即返回上一页面。</li>
+</ul>
+<h3 id="40-picker-点击未响应"><a class="markdownIt-Anchor" href="#40-picker-点击未响应"></a> 40、 picker 点击未响应</h3>
+<ul>
+<li>检查下是否有变量名写错</li>
+<li>value 一定要有值</li>
+</ul>
+<h3 id="41-点击事件未响应"><a class="markdownIt-Anchor" href="#41-点击事件未响应"></a> 41: 点击事件未响应</h3>
+<ul>
+<li>调整 z-index</li>
+</ul>
+<h3 id="42-微信小程序-button-去除边框"><a class="markdownIt-Anchor" href="#42-微信小程序-button-去除边框"></a> 42: 微信小程序 button 去除边框</h3>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.share_p</span> &#123;</span><br><span class="line">  <span class="attribute">bottom</span>: <span class="number">0</span>;</span><br><span class="line">  <span class="attribute">left</span>: <span class="number">0</span>;</span><br><span class="line">  <span class="attribute">border</span>: none;</span><br><span class="line">  <span class="attribute">margin</span>: <span class="number">0</span>;</span><br><span class="line">  <span class="attribute">background-color</span>: <span class="number">#ffffff</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="selector-class">.share_p</span><span class="selector-pseudo">::after</span> &#123;</span><br><span class="line">  <span class="attribute">border</span>: none;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="43-position-fixed居中"><a class="markdownIt-Anchor" href="#43-position-fixed居中"></a> 43、position: fixed;居中</h3>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">position</span>: <span class="selector-tag">fixed</span>;</span><br><span class="line"><span class="selector-tag">margin</span>: 0 <span class="selector-tag">auto</span>;</span><br><span class="line"><span class="selector-tag">left</span>: 0;</span><br><span class="line"><span class="selector-tag">right</span>: 0;</span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/微信小程序/" rel="tag"># 微信小程序</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/10/23/微信小程序图片上传至七牛云/" rel="next" title="微信小程序图片上传至七牛云">
+                <i class="fa fa-chevron-left"></i> 微信小程序图片上传至七牛云
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2019/11/03/Mac下Go语言环境配置/" rel="prev" title="Mac下Go语言环境配置">
+                Mac下Go语言环境配置 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+    <div class="comments" id="comments">
+      <div id="lv-container" data-id="city" data-uid="MTAyMC80NzI4My8yMzc4Mw=="></div>
+    </div>
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image" src="https://picture.cqzhong.cn/avatar.png" alt="曹庆中">
+            
+              <p class="site-author-name" itemprop="name">曹庆中</p>
+              <p class="site-description motion-element" itemprop="description">学如逆水行舟,不进则退。心似平原走马,易放难追。</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">73</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">7</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">47</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/cqzhong" target="_blank" title="GitHub">
+                      
+                        <i class="fa fa-fw fa-github"></i>GitHub</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="mailto:1024463782@qq.com" target="_blank" title="E-Mail">
+                      
+                        <i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="https://gitee.com/cqzhong" target="_blank" title="码云">
+                      
+                        <i class="fa fa-fw fa-google"></i>码云</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="http://picture.cqzhong.cn/Wechat.jpeg" target="_blank" title="微信">
+                      
+                        <i class="fa fa-fw fa-weixin"></i>微信</a>
+                  </span>
+                
+            </div>
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-display"><span class="nav-number">1.</span> <span class="nav-text"> 1、display</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-flex"><span class="nav-number">2.</span> <span class="nav-text"> 2、flex</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-image-使用"><span class="nav-number">3.</span> <span class="nav-text"> 3、image 使用</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#4-overflow"><span class="nav-number">4.</span> <span class="nav-text"> 4、overflow</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#5-wxfor-使用"><span class="nav-number">5.</span> <span class="nav-text"> 5、wx:for 使用</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#6-模版的使用"><span class="nav-number">6.</span> <span class="nav-text"> 6、模版的使用</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#7-block-使用"><span class="nav-number">7.</span> <span class="nav-text"> 7、block 使用</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#8-画细线"><span class="nav-number">8.</span> <span class="nav-text"> 8、画细线</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#9事件绑定"><span class="nav-number">9.</span> <span class="nav-text"> 9.事件绑定</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#10-返回上级界面携带参数"><span class="nav-number">10.</span> <span class="nav-text"> 10、返回上级界面，携带参数</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#11-重定向一个页面携带参数"><span class="nav-number">11.</span> <span class="nav-text"> 11、重定向一个页面，携带参数</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#12-微信小程序-页面隐藏导航栏"><span class="nav-number">12.</span> <span class="nav-text"> 12、微信小程序 页面隐藏导航栏</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#13-微信小程序绑定两个方法"><span class="nav-number">13.</span> <span class="nav-text"> 13、微信小程序，绑定两个方法</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#14-组件-component-使用"><span class="nav-number">14.</span> <span class="nav-text"> 14、组件 Component 使用</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#15-data-赋值时候一定要小写写大写也会被转为小写-取值取不出来"><span class="nav-number">15.</span> <span class="nav-text"> 15、data- 赋值时候一定要小写，写大写也会被转为小写。取值取不出来</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#16-继承"><span class="nav-number">16.</span> <span class="nav-text"> 16、继承</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#17-渐隐效果"><span class="nav-number">17.</span> <span class="nav-text"> 17、渐隐效果</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#18-微信小程序字体引入外部字体注意是-https"><span class="nav-number">18.</span> <span class="nav-text"> 18、微信小程序字体引入外部字体(注意是 https)</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#19-hidden-只能对块级元素无效-改为-displaynone"><span class="nav-number">19.</span> <span class="nav-text"> 19、hidden 只能对块级元素无效 改为 display:none</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#20-解析构造"><span class="nav-number">20.</span> <span class="nav-text"> 20、解析构造</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#21-修改数据源"><span class="nav-number">21.</span> <span class="nav-text"> 21、修改数据源</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#22-事件冒泡"><span class="nav-number">22.</span> <span class="nav-text"> 22、事件冒泡</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#23"><span class="nav-number">23.</span> <span class="nav-text"> 23</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#24-error"><span class="nav-number">24.</span> <span class="nav-text"> 24、error</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#25-不换行"><span class="nav-number">25.</span> <span class="nav-text"> 25、不换行</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#26-api"><span class="nav-number">26.</span> <span class="nav-text"> 26、API</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#27"><span class="nav-number">27.</span> <span class="nav-text"> 27</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#28-自定义顶层弹窗"><span class="nav-number">27.1.</span> <span class="nav-text"> 28、自定义顶层弹窗</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#29-wxdownloadfile"><span class="nav-number">28.</span> <span class="nav-text"> 29、wx.downloadFile</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#30"><span class="nav-number">29.</span> <span class="nav-text"> 30</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#31-canvas"><span class="nav-number">30.</span> <span class="nav-text"> 31、canvas</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#31-canvas-drawimage"><span class="nav-number">31.</span> <span class="nav-text"> 31、 canvas drawImage</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#32-calc-函数"><span class="nav-number">32.</span> <span class="nav-text"> 32. calc() 函数</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#33-对齐"><span class="nav-number">33.</span> <span class="nav-text"> 33. 对齐</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#34-箭头函数"><span class="nav-number">34.</span> <span class="nav-text"> 34、 箭头函数</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#35-动态设置-tabbar"><span class="nav-number">35.</span> <span class="nav-text"> 35、动态设置 tabbar</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#36-获取微信头像昵称不需要授权"><span class="nav-number">36.</span> <span class="nav-text"> 36、获取微信头像，昵称(不需要授权)</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#37-微信小程序字数限制"><span class="nav-number">37.</span> <span class="nav-text"> 37、微信小程序字数限制</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#38-页面传参对象"><span class="nav-number">38.</span> <span class="nav-text"> 38、页面传参对象</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#39-路由跳转"><span class="nav-number">39.</span> <span class="nav-text"> 39、路由跳转</span></a></li></ol><li class="nav-item nav-level-3"><a class="nav-link" href="#40-picker-点击未响应"><span class="nav-number"></span> <span class="nav-text"> 40、 picker 点击未响应</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#41-点击事件未响应"><span class="nav-number"></span> <span class="nav-text"> 41: 点击事件未响应</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#42-微信小程序-button-去除边框"><span class="nav-number"></span> <span class="nav-text"> 42: 微信小程序 button 去除边框</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#43-position-fixed居中"><span class="nav-number"></span> <span class="nav-text"> 43、position: fixed;居中</span></a></li></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2020</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">曹庆中</span>
+
+  
+</div>
+
+
+  <div class="powered-by">豫ICP备19030079号</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">爱国敬业</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+    <script type="text/javascript">
+      (function(d, s) {
+        var j, e = d.getElementsByTagName(s)[0];
+        if (typeof LivereTower === 'function') { return; }
+        j = d.createElement(s);
+        j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+        j.async = true;
+        e.parentNode.insertBefore(j, e);
+      })(document, 'script');
+    </script>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url);
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+
+  
+<script>
+(function(){
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';        
+    }
+    else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
+
+
+  
+  
+
+  
+  
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+      });
+    </script>
+
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+      });
+    </script>
+    <script type="text/javascript" src="cdn.bootcss.com/mathjax/2.7.1/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+  
+
+
+  
+
+  
+
+<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"debug":false,"model":{"jsonPath":"/live2dw/assets/hijiki.model.json"},"display":{"position":"left","width":260,"height":420,"hOffset":0,"vOffset":100},"mobile":{"show":false,"scale":0.5},"log":false});</script></body>
+</html>
+
+<!-- <script type="text/javascript" src="/js/love_click.js"></script> -->
+
