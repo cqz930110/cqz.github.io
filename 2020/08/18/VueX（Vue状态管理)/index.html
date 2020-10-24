@@ -87,7 +87,7 @@
 <meta property="og:site_name" content="cqzhong&#39;s blog">
 <meta property="og:description" content="一、初识 VueX  1.1 关于 VueX Vue 官网提供的状态管理器名为 Vuex，Vuex，用于管理分散在 Vue 各个组件中的数据。 对于小型应用来说，完全没有必要引入状态管理，因为这会带来更多的开发成本。然而当应用的复杂度逐渐提高，状态管理也越发重要起来。 对于组件化开发来说，大型应用的状态往往跨越多个组件。在多层嵌套的父子组件之间传递状态已经十分麻烦，而 Vue 更是没有为兄弟组件">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2020-10-24T10:20:35.823Z">
+<meta property="og:updated_time" content="2020-10-24T13:39:07.526Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="VueX（Vue状态管理)">
 <meta name="twitter:description" content="一、初识 VueX  1.1 关于 VueX Vue 官网提供的状态管理器名为 Vuex，Vuex，用于管理分散在 Vue 各个组件中的数据。 对于小型应用来说，完全没有必要引入状态管理，因为这会带来更多的开发成本。然而当应用的复杂度逐渐提高，状态管理也越发重要起来。 对于组件化开发来说，大型应用的状态往往跨越多个组件。在多层嵌套的父子组件之间传递状态已经十分麻烦，而 Vue 更是没有为兄弟组件">
@@ -441,6 +441,9 @@
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> Vue <span class="keyword">from</span> <span class="string">"vue"</span>;</span><br><span class="line"><span class="keyword">import</span> Vuex <span class="keyword">from</span> <span class="string">"vuex"</span>;</span><br><span class="line"></span><br><span class="line">Vue.use(Vuex);</span><br><span class="line"><span class="keyword">const</span> files = <span class="built_in">require</span>.context(<span class="string">"./modules"</span>, <span class="literal">false</span>, /\.js$/);</span><br><span class="line"><span class="keyword">let</span> modules = &#123;</span><br><span class="line">  state: &#123;&#125;,</span><br><span class="line">  mutations: &#123;&#125;,</span><br><span class="line">  actions: &#123;&#125;,</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">files.keys().forEach(<span class="function">(<span class="params">key</span>) =&gt;</span> &#123;</span><br><span class="line">  <span class="built_in">Object</span>.assign(modules.state, files(key)[<span class="string">"state"</span>]);</span><br><span class="line">  <span class="built_in">Object</span>.assign(modules.mutations, files(key)[<span class="string">"mutations"</span>]);</span><br><span class="line">  <span class="built_in">Object</span>.assign(modules.actions, files(key)[<span class="string">"actions"</span>]);</span><br><span class="line">&#125;);</span><br><span class="line"><span class="keyword">const</span> store = <span class="keyword">new</span> Vuex.Store(modules);</span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> store;</span><br></pre></td></tr></table></figure>
 <p><code>common.js</code>文件</p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> Vue <span class="keyword">from</span> <span class="string">"vue"</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">const</span> state = &#123;</span><br><span class="line">  <span class="comment">//登录弹窗状态</span></span><br><span class="line">  loginPopupShow: <span class="literal">false</span>,</span><br><span class="line">&#125;;</span><br><span class="line"><span class="keyword">export</span> <span class="keyword">const</span> mutations = &#123;</span><br><span class="line">  <span class="comment">//登录弹窗状态</span></span><br><span class="line">  setLoginPopupShow(state, data) &#123;</span><br><span class="line">    state.loginPopupShow = data;</span><br><span class="line">  &#125;,</span><br><span class="line">&#125;;</span><br><span class="line"><span class="keyword">export</span> <span class="keyword">const</span> actions = &#123;&#125;;</span><br></pre></td></tr></table></figure>
+<ul>
+<li><a href="https://www.jianshu.com/p/2e5973fe1223" target="_blank" rel="noopener">参考来源</a></li>
+</ul>
 
       
     </div>
@@ -569,7 +572,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">75</span>
+                  <span class="site-state-item-count">76</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -591,7 +594,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">48</span>
+                  <span class="site-state-item-count">49</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>

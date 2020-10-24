@@ -68,7 +68,7 @@
 
 
 
-  <meta name="keywords" content="iOS,CocoaPods,组件化,">
+  <meta name="keywords" content="iOS,遍历,">
 
 
 
@@ -79,18 +79,18 @@
 
 
 
-<meta name="description" content="一、创建存放 podspec 文件的仓库 1、创建私有 pod 仓库 Specs 2、在终端把远程的私有版本库添加到本地索引 1pod repo add Specs https://gitlab.com/ios/Specs.git">
-<meta name="keywords" content="iOS,CocoaPods,组件化">
+<meta name="description" content="使用 for 循环 要遍历字典、数组或者是集合，for 循环是最简单也用的比较多的方法，示例如下：">
+<meta name="keywords" content="iOS,遍历">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Cocoapods 私有仓库">
-<meta property="og:url" content="https://www.cqzhong.cn/2019/10/14/Cocoapods 私有仓库/index.html">
+<meta property="og:title" content="Objective-C 中的各种遍历（迭代）方式">
+<meta property="og:url" content="https://www.cqzhong.cn/2019/10/12/Objective-C 中的各种遍历（迭代）方式/index.html">
 <meta property="og:site_name" content="cqzhong&#39;s blog">
-<meta property="og:description" content="一、创建存放 podspec 文件的仓库 1、创建私有 pod 仓库 Specs 2、在终端把远程的私有版本库添加到本地索引 1pod repo add Specs https://gitlab.com/ios/Specs.git">
+<meta property="og:description" content="使用 for 循环 要遍历字典、数组或者是集合，for 循环是最简单也用的比较多的方法，示例如下：">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2020-10-24T13:39:08.498Z">
+<meta property="og:updated_time" content="2020-10-24T13:39:07.419Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Cocoapods 私有仓库">
-<meta name="twitter:description" content="一、创建存放 podspec 文件的仓库 1、创建私有 pod 仓库 Specs 2、在终端把远程的私有版本库添加到本地索引 1pod repo add Specs https://gitlab.com/ios/Specs.git">
+<meta name="twitter:title" content="Objective-C 中的各种遍历（迭代）方式">
+<meta name="twitter:description" content="使用 for 循环 要遍历字典、数组或者是集合，for 循环是最简单也用的比较多的方法，示例如下：">
 
 
 
@@ -120,13 +120,13 @@
 
 
 
-  <link rel="canonical" href="https://www.cqzhong.cn/2019/10/14/Cocoapods 私有仓库/">
+  <link rel="canonical" href="https://www.cqzhong.cn/2019/10/12/Objective-C 中的各种遍历（迭代）方式/">
 
 
 
 
 
-  <title>Cocoapods 私有仓库 | cqzhong's blog</title>
+  <title>Objective-C 中的各种遍历（迭代）方式 | cqzhong's blog</title>
   
 
 
@@ -294,7 +294,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://www.cqzhong.cn/2019/10/14/Cocoapods 私有仓库/">
+    <link itemprop="mainEntityOfPage" href="https://www.cqzhong.cn/2019/10/12/Objective-C 中的各种遍历（迭代）方式/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="曹庆中">
@@ -311,7 +311,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">Cocoapods 私有仓库</h1>
+          <h1 class="post-title" itemprop="name headline">Objective-C 中的各种遍历（迭代）方式</h1>
         
 
         <div class="post-meta">
@@ -323,8 +323,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-10-14T12:58:06+08:00">
-                2019-10-14
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-10-12T21:41:04+08:00">
+                2019-10-12
               </time>
             
 
@@ -383,59 +383,59 @@
       
 
       
-        <h3 id="一-创建存放-podspec-文件的仓库"><a class="markdownIt-Anchor" href="#一-创建存放-podspec-文件的仓库"></a> 一、创建存放 podspec 文件的仓库</h3>
-<p>1、创建私有 pod 仓库 <a href="https://gitlab.com/ios/Specs.git" target="_blank" rel="noopener">Specs</a></p>
-<p>2、在终端把远程的私有版本库添加到本地索引</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pod repo add Specs https://gitlab.com/ios/Specs.git</span><br></pre></td></tr></table></figure>
+        <h4 id="使用-for-循环"><a class="markdownIt-Anchor" href="#使用-for-循环"></a> 使用 <code>for</code> 循环</h4>
+<p>要遍历字典、数组或者是集合，<code>for</code> 循环是最简单也用的比较多的方法，示例如下：</p>
 <a id="more"></a>
-<p>然后会要求输入账号和密码</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">Last login: Fri Mar 15 14:39:34 on ttys000</span><br><span class="line">caoqingzhongdeMacBook-Pro:~ caoqingzhong$ pod repo add Specs https://gitlab.com/ios/Specs.git</span><br><span class="line">Cloning spec repo `Specs` from `https://gitlab.com/ios/Specs.git`</span><br><span class="line">Username <span class="keyword">for</span> <span class="string">'https://gitlab.com'</span>: cqz</span><br><span class="line">Password <span class="keyword">for</span> <span class="string">'https://cqz@gitlab.com'</span>:</span><br><span class="line">caoqingzhongdeMacBook-Pro:~ caoqingzhong$</span><br></pre></td></tr></table></figure>
-<p>master 是 cocoaPods 上版本库的列表</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">open ~/.cocoapods/repos</span><br></pre></td></tr></table></figure>
-<h3 id="二-创建代码仓库"><a class="markdownIt-Anchor" href="#二-创建代码仓库"></a> 二、创建代码仓库</h3>
-<p>1、Gitlab 上创建相关 demo 项目<br>
-2、先到要创建项目的目录然后执行。</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pod lib create NetworkReachability</span><br></pre></td></tr></table></figure>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">What platform <span class="keyword">do</span> you want to use?? [ iOS / macOS ]</span><br><span class="line"></span><br><span class="line"> &gt; iOS</span><br><span class="line"></span><br><span class="line">What language <span class="keyword">do</span> you want to use?? [ Swift / ObjC ] （你用什么语言？）</span><br><span class="line"></span><br><span class="line"> &gt; ObjC</span><br><span class="line"></span><br><span class="line">Would you like to include a demo application with your library? [ Yes / No ]（是否需要一个例子工程；）</span><br><span class="line"></span><br><span class="line"> &gt; Yes</span><br><span class="line"></span><br><span class="line">Which testing frameworks will you use? [ Specta / Kiwi / None ]（选择一个测试框架；）</span><br><span class="line"></span><br><span class="line"> &gt; None</span><br><span class="line"></span><br><span class="line">Would you like to <span class="keyword">do</span> view based testing? [ Yes / No ]（是否基于View测试；）</span><br><span class="line"></span><br><span class="line"> &gt; No</span><br><span class="line"></span><br><span class="line">What is your class prefix?（类的前缀；）</span><br><span class="line"></span><br><span class="line"> &gt;</span><br></pre></td></tr></table></figure>
-<p>3、然后本地文件夹路径会看到项目</p>
-<p>4、替换 NetworkReachability 文件夹内的相关内容。</p>
-<p>5、按照规范编写.podspec 文件。</p>
-<p>6、在回到 Example 路径下，重新执行 pod install 操作</p>
-<p>7、到相关目录验证.podspec 的正确性(如果通不过，也可以先提交至代码仓库，添加 tag，然后验证。)</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">1、pod lib lint 或者 pod spec lint 如果想要忽略警告：--allow-warnings eg: pod spec lint --allow-warnings</span><br><span class="line">2、如果有错误，查看详细信息：pod spec lint --verbose</span><br></pre></td></tr></table></figure>
-<p>8、当你看到 NetworkReachability.podspec passed validation 时，说明验证通过了</p>
-<p>9、因为 podspec 文件中获取 Git 版本控制的项目还需要 tag 号，所以我们要打上一个 tag</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">git status</span><br><span class="line">git add .</span><br><span class="line">git commit -m <span class="string">'编辑spec文件'</span></span><br><span class="line">git remote add origin https://gitlab.com:ios/NetworkReachability.git <span class="comment">#添加远端仓库</span></span><br><span class="line">git push origin master  <span class="comment">#提交到远端</span></span><br><span class="line">git tag -m <span class="string">"第一次提交"</span> <span class="string">"0.0.1"</span> (要与NetworkReachability.podspec文件中的tag值保持一致)</span><br><span class="line">git push --tags     <span class="comment">#推送tag到远端仓库</span></span><br></pre></td></tr></table></figure>
-<p>10、向 Spec Repo 提交 podspec。执行 pod repo push 本地 repo 名 NAME.podspec --verbose --use-libraries --allow-warnings</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">pod repo push Specs NetworkReachability.podspec</span><br><span class="line">当出现</span><br><span class="line">Validating spec</span><br><span class="line"> -&gt; NetworkReachability (0.0.1)</span><br><span class="line"></span><br><span class="line">Updating the `Specs&apos; repo</span><br><span class="line"></span><br><span class="line">From https://gitlab.com/ios/Specs</span><br><span class="line"> * [new branch]      master     -&gt; origin/master</span><br><span class="line"></span><br><span class="line">Adding the spec to the `Specs&apos; repo</span><br><span class="line"></span><br><span class="line"> - [Add] NetworkReachability (0.0.1)</span><br><span class="line"></span><br><span class="line">Pushing the `Specs&apos; repo</span><br></pre></td></tr></table></figure>
-<p>11、GitLab 端查看项目</p>
-<p>12、查看 本地 Repos</p>
-<h3 id="三-私有库的使用"><a class="markdownIt-Anchor" href="#三-私有库的使用"></a> 三、私有库的使用</h3>
-<p>1、用 Xcode 打开编辑 Podfile 文件</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br></pre></td><td class="code"><pre><span class="line">project &apos;FT_iPhone.xcodeproj&apos;</span><br><span class="line"></span><br><span class="line"># Uncomment the next line to define a global platform for your project</span><br><span class="line"> platform :ios, &apos;9.0&apos;</span><br><span class="line"> inhibit_all_warnings!</span><br><span class="line"></span><br><span class="line">source &apos;https://github.com/CocoaPods/Specs.git&apos;</span><br><span class="line">source &apos;https://github.com/aliyun/aliyun-specs.git&apos;</span><br><span class="line">source &apos;https://gitlab.com/ios/Specs.git&apos;</span><br><span class="line"></span><br><span class="line">target &apos;FT_iPhone&apos; do</span><br><span class="line">  # Uncomment the next line if you&apos;re using Swift or would like to use dynamic frameworks</span><br><span class="line">  # use_frameworks!</span><br><span class="line"></span><br><span class="line">  # Pods for FT_iPhone</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">#唱道私有库</span><br><span class="line"></span><br><span class="line">#网络监测</span><br><span class="line">pod &apos;NetworkReachability&apos;, &apos;~&gt; 0.0.2&apos;</span><br><span class="line">pod &apos;Font&apos;, &apos;~&gt; 0.0.3&apos;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">end</span><br><span class="line"></span><br><span class="line">post_install do |installer|</span><br><span class="line">    installer.pods_project.targets.each do |target|</span><br><span class="line">        target.build_configurations.each do |config|</span><br><span class="line">            config.build_settings[&apos;IPHONEOS_DEPLOYMENT_TARGET&apos;] = &apos;9.0&apos;</span><br><span class="line"></span><br><span class="line">        # Pod文件在Debug模式下不进行编译优化,提升编译速度</span><br><span class="line">        if config.name.include?(&quot;Debug&quot;)</span><br><span class="line">                config.build_settings[&apos;GCC_OPTIMIZATION_LEVEL&apos;] = &apos;0&apos;</span><br><span class="line">            end</span><br><span class="line">        end</span><br><span class="line">    end</span><br><span class="line">end</span><br></pre></td></tr></table></figure>
-<p>2、 pod search NetworkReachability</p>
-<p>3、查看本地的 pod 库索引 pod repo</p>
-<p>4、使用与其它第三方库一样，只是私有库版本更新维护是自己处理</p>
-<h3 id="四-创建私有库遇到的坑"><a class="markdownIt-Anchor" href="#四-创建私有库遇到的坑"></a> 四、创建私有库遇到的坑</h3>
-<p>1、pod search 搜索不到问题</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pod repo update ，如果还搜索不到: pod search EmptyView --simple 可搜到</span><br></pre></td></tr></table></figure>
-<p>2、提交代码以后，打上 tag。然后再去验证 spec 或者是 lib</p>
-<p>3、打上标签</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">git tag -m <span class="string">"first release"</span> <span class="string">"0.1.0"</span> (要与DRCategories.podspec文件中的tag值保持一致)</span><br><span class="line"></span><br><span class="line">git push --tags     <span class="comment">#推送tag到远端仓库</span></span><br></pre></td></tr></table></figure>
-<p>4、推送到远端仓库</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">执行 pod repo push 本地repo名 NAME.podspec --verbose --use-libraries --allow-warnings</span><br></pre></td></tr></table></figure>
-<p>5、清除本地 spec 文件缓存</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">//查看所有spec文件的缓存，可以直接到路径下删除文件</span><br><span class="line"></span><br><span class="line">pod cache list</span><br><span class="line"></span><br><span class="line">//删除指定库的缓存文件</span><br><span class="line"></span><br><span class="line">pod cache clean AFNetworking</span><br><span class="line"></span><br><span class="line">//运行podfile文件但不更新本地spec文件</span><br><span class="line"></span><br><span class="line">pod install --no-repo-update</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">最好使用 pod spec lint CZFTool.podspec --verbose (打印错误信息)</span><br><span class="line"></span><br><span class="line">如果有引用到库framwork或C语言库的话必须使用</span><br><span class="line">pod spec lint CZFTool.podspec --use-libraries // 验证</span><br><span class="line">pod trunk push CZFTool.podspec  --use-libraries           // 上传</span><br></pre></td></tr></table></figure>
-<p>6、- ERROR | [iOS] unknown: Encountered an unknown error (Unable to find a specification for <code>XSLKeyChainCache (~&gt; 0.1.0)</code> depended upon by <code>XSLOpenUDID</code>) during validation.</p>
-<p>说明在你的本地 repo 里没有存在 XSLKeyChainCache 私有库<br>
-解决方案</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//普通的for循环遍历</span></span><br><span class="line">-(<span class="keyword">void</span>)iteratorWithFor &#123;</span><br><span class="line">    <span class="comment">// 处理数组</span></span><br><span class="line">    NSArray *arrayM = @[@<span class="string">"1"</span>,@<span class="string">"2"</span>,@<span class="string">"3"</span>,@<span class="string">"4"</span>];</span><br><span class="line">    NSInteger arrayMCount = [arrayM count];</span><br><span class="line">    <span class="keyword">for</span> (int i = <span class="number">0</span>; i&lt;arrayMCount; i++) &#123;</span><br><span class="line">        NSString *obj = arrayM[i];</span><br><span class="line">        NSLog(@<span class="string">"%@"</span>,obj);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 处理字典</span></span><br><span class="line">    NSDictionary *dictM = @&#123;@<span class="string">"1"</span>:@<span class="string">"one"</span>,@<span class="string">"2"</span>:@<span class="string">"two"</span>,@<span class="string">"3"</span>:@<span class="string">"three"</span>&#125;;</span><br><span class="line">    NSArray *dictKeysArray = [dictM allKeys];</span><br><span class="line">    <span class="keyword">for</span> (int i = <span class="number">0</span>; i&lt;dictKeysArray.count; i++) &#123;</span><br><span class="line">        NSString *key = dictKeysArray[i];</span><br><span class="line">        NSString *obj = [dictM objectForKey:key];</span><br><span class="line">        NSLog(@<span class="string">"%@:%@"</span>,key,obj);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 处理集合</span></span><br><span class="line">    NSSet * setM = [[NSSet alloc] initWithObjects:@<span class="string">"one"</span>,@<span class="string">"two"</span>,@<span class="string">"three"</span>,@<span class="string">"four"</span>, nil];</span><br><span class="line">    NSArray *setObjArray = [setM allObjects];</span><br><span class="line">    <span class="keyword">for</span> (int i = <span class="number">0</span>; i&lt;setObjArray.count; i++) &#123;</span><br><span class="line">        NSString *obj = setObjArray[i];</span><br><span class="line">        NSLog(@<span class="string">"%@"</span>,obj);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 反向遍历----降序遍历----以数组为例</span></span><br><span class="line">    NSArray *arrayM2 = @[@<span class="string">"1"</span>,@<span class="string">"2"</span>,@<span class="string">"3"</span>,@<span class="string">"4"</span>];</span><br><span class="line">    NSInteger arrayMCount2 = [arrayM2 count] - <span class="number">1</span>;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">for</span> (NSInteger i = arrayMCount2; i&gt;<span class="number">0</span>; i--) &#123;</span><br><span class="line">        NSString *obj = arrayM2[i];</span><br><span class="line">        NSLog(@<span class="string">"%@"</span>,obj);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <ul>
-<li>pod repo update 更新本地的私有库</li>
-<li>指定私有库路径 pod sepc lint 文件名.podspec --sources=‘<a href="https://gitlab.com/ios/LyricParser.git,https://gitlab.com/ios/Specs.git" target="_blank" rel="noopener">https://gitlab.com/ios/LyricParser.git,https://gitlab.com/ios/Specs.git</a>’</li>
+<li>优点：简单</li>
+<li>缺点：由于字典和集合内部是无序的，导致我们在遍历字典和集合的时候需要借助一个新的『数组』作为中介来处理，多出了一部分开销。</li>
 </ul>
-<h4 id="7-本地私有-pods"><a class="markdownIt-Anchor" href="#7-本地私有-pods"></a> 7、本地私有 pods</h4>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">#自定义的第三方</span><br><span class="line">#pod &apos;XLForm&apos;, :path =&gt; &apos;../../&apos;</span><br><span class="line">pod &apos;FPS&apos;, :path    =&gt; &apos;./Programme/ThirdLibrary/FPS&apos;</span><br><span class="line">pod &apos;SCStackViewController&apos;, :path    =&gt; &apos;./Programme/ThirdLibrary/SCStackView&apos;</span><br></pre></td></tr></table></figure>
-<h4 id="8-在每一个私有库的下面写一个更新的脚本避免繁琐的操作"><a class="markdownIt-Anchor" href="#8-在每一个私有库的下面写一个更新的脚本避免繁琐的操作"></a> 8 在每一个私有库的下面写一个更新的脚本，避免繁琐的操作</h4>
+<h4 id="二-使用-nsenumerator-遍历"><a class="markdownIt-Anchor" href="#二-使用-nsenumerator-遍历"></a> 二、使用 <code>NSEnumerator</code> 遍历</h4>
+<p><code>NSEnumerator</code> 的使用和基本的 for 循环类似，不过代码量要大一些。示例如下：</p>
+<figure class="highlight objc"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//使用NSEnumerator遍历</span></span><br><span class="line">-(<span class="keyword">void</span>)iteratorWithEnumerator &#123;</span><br><span class="line">    <span class="comment">// 处理数组</span></span><br><span class="line">    <span class="built_in">NSArray</span> *arrayM = @[<span class="string">@"1"</span>,<span class="string">@"2"</span>,<span class="string">@"3"</span>,<span class="string">@"4"</span>];</span><br><span class="line">    <span class="built_in">NSEnumerator</span> *arrayEnumerator = [arrayM objectEnumerator];</span><br><span class="line">    <span class="built_in">NSString</span> *obj;</span><br><span class="line">    <span class="keyword">while</span> ((obj = [arrayEnumerator nextObject]) != <span class="literal">nil</span>) &#123;</span><br><span class="line">        <span class="built_in">NSLog</span>(<span class="string">@"%@"</span>,obj);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 处理字典</span></span><br><span class="line">    <span class="built_in">NSDictionary</span> *dictM = @&#123;<span class="string">@"1"</span>:<span class="string">@"one"</span>,<span class="string">@"2"</span>:<span class="string">@"two"</span>,<span class="string">@"3"</span>:<span class="string">@"three"</span>&#125;;</span><br><span class="line">    <span class="built_in">NSEnumerator</span> *dictEnumerator = [dictM keyEnumerator];</span><br><span class="line">    <span class="built_in">NSString</span> *key;</span><br><span class="line">    <span class="keyword">while</span> ((key = [dictEnumerator nextObject]) != <span class="literal">nil</span>) &#123;</span><br><span class="line">        <span class="built_in">NSString</span> *obj = dictM[key];</span><br><span class="line">        <span class="built_in">NSLog</span>(<span class="string">@"%@"</span>,obj);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    <span class="comment">// 处理集合</span></span><br><span class="line">    <span class="built_in">NSSet</span> * setM = [[<span class="built_in">NSSet</span> alloc] initWithObjects:<span class="string">@"one"</span>,<span class="string">@"two"</span>,<span class="string">@"three"</span>,<span class="string">@"four"</span>, <span class="literal">nil</span>];</span><br><span class="line">    <span class="built_in">NSEnumerator</span> *setEnumerator = [setM objectEnumerator];</span><br><span class="line">    <span class="built_in">NSString</span> *setObj;</span><br><span class="line">    <span class="keyword">while</span> ((setObj = [setEnumerator nextObject]) != <span class="literal">nil</span>) &#123;</span><br><span class="line">        <span class="built_in">NSLog</span>(<span class="string">@"%@"</span>,setObj);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    <span class="comment">// 反向遍历----降序遍历----以数组为例</span></span><br><span class="line">    <span class="built_in">NSArray</span> *arrayM2 = @[<span class="string">@"1"</span>,<span class="string">@"2"</span>,<span class="string">@"3"</span>,<span class="string">@"4"</span>];</span><br><span class="line">    <span class="built_in">NSEnumerator</span> *arrayEnumerator2 = [arrayM2 reverseObjectEnumerator];</span><br><span class="line">    <span class="built_in">NSString</span> *obj2;</span><br><span class="line">    <span class="keyword">while</span> ((obj2 = [arrayEnumerator2 nextObject]) != <span class="literal">nil</span>) &#123;</span><br><span class="line">        <span class="built_in">NSLog</span>(<span class="string">@"%@"</span>,obj2);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>优点：对于不同的数据类型，遍历的语法相似；内部可以简单的通过 reverseObjectEnumerator 设置进行反向遍历。</li>
+<li>缺点：代码量稍大。</li>
+</ul>
+<h4 id="三-使用-forin-遍历"><a class="markdownIt-Anchor" href="#三-使用-forin-遍历"></a> 三、使用 <code>for...in</code> 遍历</h4>
+<p>在 <code>Objective-C 2.0</code> 中增加了 <code>for ...in</code> 形式的快速遍历。此种遍历方式语法简洁，速度飞快。示例如下：</p>
+<figure class="highlight objc"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//使用for...In进行快速遍历</span></span><br><span class="line">-(<span class="keyword">void</span>)iteratorWithForIn &#123;</span><br><span class="line">    <span class="comment">// 处理数组</span></span><br><span class="line">    <span class="built_in">NSArray</span> *arrayM = @[<span class="string">@"1"</span>,<span class="string">@"2"</span>,<span class="string">@"3"</span>,<span class="string">@"4"</span>];</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">id</span> obj <span class="keyword">in</span> arrayM) &#123;</span><br><span class="line">        <span class="built_in">NSLog</span>(<span class="string">@"%@"</span>,obj);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 处理字典</span></span><br><span class="line">    <span class="built_in">NSDictionary</span> *dictM = @&#123;<span class="string">@"1"</span>:<span class="string">@"one"</span>,<span class="string">@"2"</span>:<span class="string">@"two"</span>,<span class="string">@"3"</span>:<span class="string">@"three"</span>&#125;;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">id</span> obj <span class="keyword">in</span> dictM) &#123;</span><br><span class="line">        <span class="built_in">NSLog</span>(<span class="string">@"%@"</span>,dictM[obj]);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 处理集合</span></span><br><span class="line">    <span class="built_in">NSSet</span> * setM = [[<span class="built_in">NSSet</span> alloc] initWithObjects:<span class="string">@"one"</span>,<span class="string">@"two"</span>,<span class="string">@"three"</span>,<span class="string">@"four"</span>, <span class="literal">nil</span>];</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">id</span> obj <span class="keyword">in</span> setM) &#123;</span><br><span class="line">        <span class="built_in">NSLog</span>(<span class="string">@"%@"</span>,obj);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 反向遍历----降序遍历----以数组为例</span></span><br><span class="line">    <span class="built_in">NSArray</span> *arrayM2 = @[<span class="string">@"1"</span>,<span class="string">@"2"</span>,<span class="string">@"3"</span>,<span class="string">@"4"</span>];</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">id</span> obj <span class="keyword">in</span> [arrayM2 reverseObjectEnumerator]) &#123;</span><br><span class="line">        <span class="built_in">NSLog</span>(<span class="string">@"%@"</span>,obj);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>优点：
+<ol>
+<li>语法简洁；</li>
+<li>效率最高；</li>
+</ol>
+</li>
+<li>缺点：无法获得当前遍历操作所针对的下标。</li>
+</ul>
+<h4 id="四-基于-block-的遍历方式"><a class="markdownIt-Anchor" href="#四-基于-block-的遍历方式"></a> 四、基于 Block 的遍历方式</h4>
+<p>基于 Block 的方式来进行遍历是最新引入的方法。它提供了遍历数组|字典等类型数据的最佳实践。示例如下：</p>
+<figure class="highlight objc"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//基于块（block）的遍历方式</span></span><br><span class="line">-(<span class="keyword">void</span>)iteratorWithBlock &#123;</span><br><span class="line">    <span class="comment">// 处理数组</span></span><br><span class="line">    <span class="built_in">NSArray</span> *arrayM = @[<span class="string">@"1"</span>,<span class="string">@"2"</span>,<span class="string">@"3"</span>,<span class="string">@"4"</span>];</span><br><span class="line">    [arrayM enumerateObjectsUsingBlock:^(<span class="keyword">id</span>  _Nonnull obj, <span class="built_in">NSUInteger</span> idx, <span class="built_in">BOOL</span> * _Nonnull stop) &#123;</span><br><span class="line">        <span class="built_in">NSLog</span>(<span class="string">@"%zd--%@"</span>,idx,obj);</span><br><span class="line">    &#125;];</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 处理字典</span></span><br><span class="line">    <span class="built_in">NSDictionary</span> *dictM = @&#123;<span class="string">@"1"</span>:<span class="string">@"one"</span>,<span class="string">@"2"</span>:<span class="string">@"two"</span>,<span class="string">@"3"</span>:<span class="string">@"three"</span>&#125;;</span><br><span class="line">    [dictM enumerateKeysAndObjectsUsingBlock:^(<span class="keyword">id</span>  _Nonnull key, <span class="keyword">id</span>  _Nonnull obj, <span class="built_in">BOOL</span> * _Nonnull stop) &#123;</span><br><span class="line">        <span class="built_in">NSLog</span>(<span class="string">@"%@:%@"</span>,key,obj);</span><br><span class="line">    &#125;];</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 处理集合</span></span><br><span class="line">    <span class="built_in">NSSet</span> * setM = [[<span class="built_in">NSSet</span> alloc] initWithObjects:<span class="string">@"one"</span>,<span class="string">@"two"</span>,<span class="string">@"three"</span>,<span class="string">@"four"</span>, <span class="literal">nil</span>];</span><br><span class="line">    [setM enumerateObjectsUsingBlock:^(<span class="keyword">id</span>  _Nonnull obj, <span class="built_in">BOOL</span> * _Nonnull stop) &#123;</span><br><span class="line">        <span class="built_in">NSLog</span>(<span class="string">@"%@"</span>,obj);</span><br><span class="line">    &#125;];</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 反向遍历----降序遍历----以数组为例</span></span><br><span class="line">    <span class="built_in">NSArray</span> *arrayM2 = @[<span class="string">@"1"</span>,<span class="string">@"2"</span>,<span class="string">@"3"</span>,<span class="string">@"4"</span>];</span><br><span class="line">    [arrayM2 enumerateObjectsWithOptions:<span class="built_in">NSEnumerationReverse</span> usingBlock:^(<span class="keyword">id</span>  _Nonnull obj, <span class="built_in">NSUInteger</span> idx, <span class="built_in">BOOL</span> * _Nonnull stop) &#123;</span><br><span class="line">        <span class="built_in">NSLog</span>(<span class="string">@"%zd--%@"</span>,idx,obj);</span><br><span class="line">    &#125;];</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>优点：
+<ol>
+<li>遍历时可以直接从 block 中获得需要的所有信息，包括下标、值等。特别相对于字典而言，不需要做多余的编码即可同时获得 key 和 value 的值。</li>
+<li>能够直接修改 block 中 key 或者 obj 的类型为真实类型，可以省去类型转换的工作。</li>
+<li>可以通过<code>NSEnumerationConcurrent</code>枚举值开启并发迭代功能。</li>
+</ol>
+</li>
+<li>说明<br>
+基于 Block 的遍历方式在实现反向遍历的时候也非常简单，使用<code>enumerateObjectsWithOptions</code>方法，传递<code>NSEnumerationReverse</code>作为参数即可，在处理遍历操作的时候推荐基于 Block 的遍历方式。</li>
+</ul>
+<h4 id="五-使-gcd-中的dispatch_apply函数"><a class="markdownIt-Anchor" href="#五-使-gcd-中的dispatch_apply函数"></a> 五、使 GCD 中的<code>dispatch_apply</code>函数</h4>
+<p>使用<code>GCD</code>中的<code>dispatch_apply</code>函数也能实现字典、数组等的遍历，该函数比较适合处理耗时较长、迭代次数较多的情况。示例如下：</p>
+<figure class="highlight objc"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//使用GCD中的dispatch_apply函数</span></span><br><span class="line">-(<span class="keyword">void</span>)iteratorWithApply &#123;</span><br><span class="line">    <span class="comment">// 处理数组</span></span><br><span class="line">    <span class="built_in">NSArray</span> *arrayM = @[<span class="string">@"1"</span>,<span class="string">@"2"</span>,<span class="string">@"3"</span>,<span class="string">@"4"</span>];</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 获得全局并发队列</span></span><br><span class="line">    <span class="built_in">dispatch_queue_t</span> queue = dispatch_get_global_queue(<span class="number">0</span>, <span class="number">0</span>);</span><br><span class="line"></span><br><span class="line">    dispatch_apply(arrayM.count, queue, ^(size_t index) &#123;</span><br><span class="line">        <span class="built_in">NSLog</span>(<span class="string">@"%@--%@"</span>,arrayM[index],[<span class="built_in">NSThread</span> currentThread]);</span><br><span class="line">    &#125;);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>优点：开启多条线程并发处理遍历任务，执行效率高。</li>
+<li>缺点：
+<ol>
+<li>对于字典和集合的处理需借助数组；</li>
+<li>无法实现反向遍历。</li>
+</ol>
+</li>
+</ul>
 
       
     </div>
@@ -455,9 +455,7 @@
           
             <a href="/tags/iOS/" rel="tag"># iOS</a>
           
-            <a href="/tags/CocoaPods/" rel="tag"># CocoaPods</a>
-          
-            <a href="/tags/组件化/" rel="tag"># 组件化</a>
+            <a href="/tags/遍历/" rel="tag"># 遍历</a>
           
         </div>
       
@@ -470,8 +468,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2019/10/12/Objective-C 中的各种遍历（迭代）方式/" rel="next" title="Objective-C 中的各种遍历（迭代）方式">
-                <i class="fa fa-chevron-left"></i> Objective-C 中的各种遍历（迭代）方式
+              <a href="/2019/10/12/Cocoapods 之组件化工具/" rel="next" title="Cocoapods 之组件化工具">
+                <i class="fa fa-chevron-left"></i> Cocoapods 之组件化工具
               </a>
             
           </div>
@@ -480,8 +478,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2019/10/21/微信小程序request封装/" rel="prev" title="微信小程序request封装">
-                微信小程序request封装 <i class="fa fa-chevron-right"></i>
+              <a href="/2019/10/14/Cocoapods 私有仓库/" rel="prev" title="Cocoapods 私有仓库">
+                Cocoapods 私有仓库 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -649,7 +647,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#一-创建存放-podspec-文件的仓库"><span class="nav-number">1.</span> <span class="nav-text"> 一、创建存放 podspec 文件的仓库</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#二-创建代码仓库"><span class="nav-number">2.</span> <span class="nav-text"> 二、创建代码仓库</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#三-私有库的使用"><span class="nav-number">3.</span> <span class="nav-text"> 三、私有库的使用</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#四-创建私有库遇到的坑"><span class="nav-number">4.</span> <span class="nav-text"> 四、创建私有库遇到的坑</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#7-本地私有-pods"><span class="nav-number">4.1.</span> <span class="nav-text"> 7、本地私有 pods</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#8-在每一个私有库的下面写一个更新的脚本避免繁琐的操作"><span class="nav-number">4.2.</span> <span class="nav-text"> 8 在每一个私有库的下面写一个更新的脚本，避免繁琐的操作</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#使用-for-循环"><span class="nav-number">1.</span> <span class="nav-text"> 使用 for 循环</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#二-使用-nsenumerator-遍历"><span class="nav-number">2.</span> <span class="nav-text"> 二、使用 NSEnumerator 遍历</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#三-使用-forin-遍历"><span class="nav-number">3.</span> <span class="nav-text"> 三、使用 for...in 遍历</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#四-基于-block-的遍历方式"><span class="nav-number">4.</span> <span class="nav-text"> 四、基于 Block 的遍历方式</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#五-使-gcd-中的dispatch_apply函数"><span class="nav-number">5.</span> <span class="nav-text"> 五、使 GCD 中的dispatch_apply函数</span></a></li></ol></div>
             
 
           </div>
