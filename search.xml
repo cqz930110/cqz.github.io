@@ -24,6 +24,29 @@
       </tags>
   </entry>
   <entry>
+    <title><![CDATA[VueX（Vue状态管理)]]></title>
+    <url>%2F2020%2F08%2F18%2FVueX%EF%BC%88Vue%E7%8A%B6%E6%80%81%E7%AE%A1%E7%90%86)%2F</url>
+    <content type="text"><![CDATA[一、初识 VueX 1.1 关于 VueX Vue 官网提供的状态管理器名为 Vuex，Vuex，用于管理分散在 Vue 各个组件中的数据。 对于小型应用来说，完全没有必要引入状态管理，因为这会带来更多的开发成本。然而当应用的复杂度逐渐提高，状态管理也越发重要起来。 对于组件化开发来说，大型应用的状态往往跨越多个组件。在多层嵌套的父子组件之间传递状态已经十分麻烦，而 Vue 更是没有为兄弟组件提供直接共享数据的办法。基于这个问题，许多框架提供了解决方案——使用全局的状态管理器，将所有分散的共享数据交由状态管理器保管，Vue 也不例外。 1.2 安装 Npm 安装 Vuex 1npm i vuex -s 在项目的根目录下新增一个store文件夹，在该文件夹内创建index.js 123456.├── App.vue├── components├── main.js└── store └── index.js 1.3 使用 1.3.1 初始化store下 index.js中的内容 State 用于维护所有应用层的状态，并确保应用只有唯一的数据源（SSOT, Single Source of Truth）。 Getter 维护由 State 派生的一些状态，这些状态随着 State 状态的变化而变化。与计算属性一样，Getter 中的派生状态在被计算之后会被缓存起来，当重复调用时，如果被依赖的状态没有变化，那么 Vuex 不会重新计算派生状态的值，而是直接采用缓存值。 Mutation 提供修改 State 状态的方法。 Action 类似 Mutation，不同在于： Action 不能直接修改状态，只能通过提交 mutation 来修改。 Action 可以包含异步操作。在组件中，我们可以直接使用 store.dispatch 来分发 action. 1234567891011121314151617181920212223242526272829303132333435363738import Vue from "vue";import Vuex from "vuex";//挂载VuexVue.use(Vuex);//创建VueX对象const store = new Vuex.Store(&#123; state: &#123; //存放的键值对就是所要管理的状态 name: "helloVueX", count: 1, version: "1.0.0", &#125;, mutations: &#123; // 成员操作 setProjectVersion(state, payload) &#123; state.version = payload; &#125;, &#125;, getters: &#123; // 加工state成员给外界 tenTimesCount(state) &#123; // vuex 为其注入state对象 return state.count * 10; &#125;, &#125;, actions: &#123; // 异步操作 getQiniuToken(context, payload) &#123; const param = ""; context.commit("setQiniuToken", param); &#125;, &#125;, // modules 模块化状态管理&#125;);export default store; 1.3.2 将 store 挂载到当前项目的 Vue 实例当中去 打开 main.js 1234567891011121314import Vue from "vue";import App from "./App";import router from "./router";import store from "./store";Vue.config.productionTip = false;/* eslint-disable no-new */new Vue(&#123; el: "#app", router, store, //store:store 和router一样，将我们创建的Vuex实例挂载到这个vue实例中 render: (h) =&gt; h(App),&#125;); 1.3.3 在组件中使用 Vuex 1234567&lt;template&gt; &lt;div id=&quot;app&quot;&gt; name: &lt;h1&gt;&#123;&#123; $store.state.name &#125;&#125;&lt;/h1&gt; &lt;span&gt;&#123;&#123; $store.getters.tenTimesCount &#125;&#125;&lt;/span&gt; &lt;/div&gt;&lt;/template&gt; 1234methods:&#123; getName()&#123; console.log(this.$store.state.name)console.log(this.$store.getters.tenTimesCount)this.$store.dispatch(&apos;getQiniuToken&apos;) this.$store.commit(&apos;setProjectVersion&apos;,&apos;1.0.1&apos;) &#125; &#125; 1234567Vue.set 为某个对象设置成员的值，若不存在则新增例如对state对象中添加一个age成员Vue.set(state,&quot;age&quot;,15)Vue.delete 删除成员将刚刚添加的age成员删除Vue.delete(state,&apos;age&apos;) modules 当项目庞大，状态非常多时，可以采用模块化管理模式。Vuex 允许我们将 store 分割成模块（module）。每个模块拥有自己的 state、mutation、action、getter、甚至是嵌套子模块——从上至下进行同样方式的分割。 store 拆分 12345.├── actions.js├── index.js├── mutations.js└── state.js 示例代码 index.js文件 12345678910import state from "./state";import * as mutations from "./mutations";import * as actions from "./actions";const store = new Vuex.Store(&#123; state, mutations, actions,&#125;);export default store; state.js文件 123export default &#123; name: "tony",&#125;; mutations.js文件 123export const setQiniu = (state, data) =&gt; &#123; state.qiniu = data;&#125;; modules 拆分 123456.├── index.js└── modules ├── common.js ├── order.js └── user.js 示例代码 index.js文件 123456789101112131415161718import Vue from "vue";import Vuex from "vuex";Vue.use(Vuex);const files = require.context("./modules", false, /\.js$/);let modules = &#123; state: &#123;&#125;, mutations: &#123;&#125;, actions: &#123;&#125;,&#125;;files.keys().forEach((key) =&gt; &#123; Object.assign(modules.state, files(key)["state"]); Object.assign(modules.mutations, files(key)["mutations"]); Object.assign(modules.actions, files(key)["actions"]);&#125;);const store = new Vuex.Store(modules);export default store; common.js文件 12345678910111213import Vue from "vue";export const state = &#123; //登录弹窗状态 loginPopupShow: false,&#125;;export const mutations = &#123; //登录弹窗状态 setLoginPopupShow(state, data) &#123; state.loginPopupShow = data; &#125;,&#125;;export const actions = &#123;&#125;;]]></content>
+      <categories>
+        <category>前端</category>
+      </categories>
+      <tags>
+        <tag>vue</tag>
+        <tag>vuex</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[uniapp使用小程序插件]]></title>
+    <url>%2F2020%2F07%2F30%2Funiapp%E4%BD%BF%E7%94%A8%E5%B0%8F%E7%A8%8B%E5%BA%8F%E6%8F%92%E4%BB%B6%2F</url>
+    <content type="text"><![CDATA[1、根目录下创建wxcomponents文件夹 2、将小程序组件拷贝过来放入对应文件夹 3、在 uniapp 的 page.json 中添加小程序组件 123456789&#123; "path": "pages/repairOrderDetail/driverDetail", "style": &#123; "navigationBarTitleText": "报修单详情", "usingComponents": &#123; "driver-skeleton": "/wxcomponents/skeleton/driverDetail/index" &#125; &#125;&#125; 4、在页面对应的 vue 组件中直接加载使用 12345&lt;template&gt; &lt;view&gt; &lt;driver-skeleton /&gt; &lt;/view&gt;&lt;/template&gt;]]></content>
+      <categories>
+        <category>前端</category>
+      </categories>
+      <tags>
+        <tag>uni-app</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[npm命令]]></title>
     <url>%2F2020%2F06%2F23%2Fnpm%E5%91%BD%E4%BB%A4%2F</url>
     <content type="text"><![CDATA[先初始化一个 package.json 文件 1npm init --yes npm 安装模块 12npm install xxx利用 npm 安装xxx模块到当前命令行所在目录npm install -g xxx利用npm安装全局模块xxx 本地安装时将模块写入 package.json 中： 123npm install xxx 安装但不写入package.jsonnpm install xxx --save 安装并写入package.json的”dependencies”中npm install xxx --save-dev 安装并写入package.json的”devDependencies”中 npm 删除模块 12npm uninstall xxx 删除xxx模块npm uninstall -g xxx 删除全局模块xxx 如果想使用淘宝源下载, 主要为了速度，建议不要用 cnpm，而是直接修改源地址 1npm i axios --save --registry=http://registry.npm.taobao.org]]></content>
@@ -794,8 +817,8 @@
         <category>移动端</category>
       </categories>
       <tags>
-        <tag>iOS</tag>
         <tag>AVPlayer</tag>
+        <tag>iOS</tag>
       </tags>
   </entry>
   <entry>
