@@ -59,6 +59,17 @@
       </tags>
   </entry>
   <entry>
+    <title><![CDATA[vue组件name的作用小结]]></title>
+    <url>%2F2020%2F07%2F21%2Fvue%E7%BB%84%E4%BB%B6name%E7%9A%84%E4%BD%9C%E7%94%A8%E5%B0%8F%E7%BB%93%2F</url>
+    <content type="text"><![CDATA[本文转载自 Qin__ 我们在写 vue 项目的时候会遇到给组件命名 这里的 name 非必选项，看起来好像没啥用处，但是实际上这里用处还挺多的 123export default &#123; name: "xxx",&#125;; 1、当项目使用 keep-alive 时，可搭配组件 name 进行缓存过滤 举个例子： 我们有个组件命名为 detail,其中 dom 加载完毕后我们在钩子函数 mounted 中进行数据加载 123456789101112131415export default &#123; name:'Detail'&#125;，mounted()&#123; this.getInfo();&#125;，methods:&#123; getInfo()&#123; axios.get('/xx/detail.json',&#123; params:&#123; id:this.$route.params.id &#125; &#125;).then(this.getInfoSucc) &#125; &#125; 因为我们在 App.vue 中使用了 keep-alive 导致我们第二次进入的时候页面不会重新请求，即触发 mounted 函数。 有两个解决方案,一个增加 activated()函数,每次进入新页面的时候再获取一次数据。 还有个方案就是在 keep-alive 中增加一个过滤，如下图所示： 12345&lt;div id=&quot;app&quot;&gt; &lt;keep-alive exclude=&quot;Detail&quot;&gt; &lt;router-view/&gt; &lt;/keep-alive&gt; &lt;/div&gt; 2、DOM 做递归组件时 比如说 detail.vue 组件里有个 list.vue 子组件，递归迭代时需要调用自身 name list.vue: 1234567891011121314151617181920212223242526272829303132333435363738 &lt;div&gt; &lt;div v-for=&quot;(item,index) of list&quot; :key=&quot;index&quot;&gt; &lt;div&gt; &lt;span class=&quot;item-title-icon&quot;&gt;&lt;/span&gt; &#123;&#123;item.title&#125;&#125; &lt;/div&gt; &lt;div v-if=&quot;item.children&quot; &gt; &lt;detail-list :list=&quot;item.children&quot;&gt;&lt;/detail-list&gt; &lt;/div&gt; &lt;/div&gt; &lt;/div&gt;&lt;script&gt;export default &#123; name:&apos;DetailList&apos;,//递归组件是指组件自身调用自身 props:&#123; list:Array &#125;&#125;&lt;/script&gt; list数据： const list = [&#123; &quot;title&quot;: &quot;A&quot;, &quot;children&quot;: [&#123; &quot;title&quot;: &quot;A-A&quot;, &quot;children&quot;: [&#123; &quot;title&quot;: &quot;A-A-A&quot; &#125;] &#125;,&#123; &quot;title&quot;: &quot;A-B&quot; &#125;] &#125;, &#123; &quot;title&quot;: &quot;B&quot; &#125;, &#123; &quot;title&quot;: &quot;C&quot; &#125;, &#123; &quot;title&quot;: &quot;D&quot; &#125;] 迭代的结果如下 3、当你用 vue-tools 时 vue-devtools 调试工具里显示的组见名称是由 vue 中组件 name 决定的]]></content>
+      <categories>
+        <category>前端</category>
+      </categories>
+      <tags>
+        <tag>vue</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[npm命令]]></title>
     <url>%2F2020%2F06%2F23%2Fnpm%E5%91%BD%E4%BB%A4%2F</url>
     <content type="text"><![CDATA[先初始化一个 package.json 文件 1npm init --yes npm 安装模块 12npm install xxx利用 npm 安装xxx模块到当前命令行所在目录npm install -g xxx利用npm安装全局模块xxx 本地安装时将模块写入 package.json 中： 123npm install xxx 安装但不写入package.jsonnpm install xxx --save 安装并写入package.json的”dependencies”中npm install xxx --save-dev 安装并写入package.json的”devDependencies”中 npm 删除模块 12npm uninstall xxx 删除xxx模块npm uninstall -g xxx 删除全局模块xxx 如果想使用淘宝源下载, 主要为了速度，建议不要用 cnpm，而是直接修改源地址 1npm i axios --save --registry=http://registry.npm.taobao.org]]></content>
@@ -853,8 +864,8 @@
         <category>移动端</category>
       </categories>
       <tags>
-        <tag>AVPlayer</tag>
         <tag>iOS</tag>
+        <tag>AVPlayer</tag>
       </tags>
   </entry>
   <entry>
