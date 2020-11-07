@@ -1834,7 +1834,7 @@ pre .javascript .function {
   width: 4px;
   height: 4px;
   border-radius: 50%;
-  background: #709a82;
+  background: #e3a3ff;
 }
 .links-of-blogroll {
   font-size: 13px;
@@ -3003,7 +3003,7 @@ pre .javascript .function {
   }
 }
 body {
-  background: url("http://picture.cqzhong.cn/website_background.jpg");
+  background: url("https://picture.cqzhong.cn/website_background.jpg");
   background-repeat: no-repeat;
   background-attachment: fixed;
   background-position: center;
