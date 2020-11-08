@@ -1619,7 +1619,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://www.cqzhong.cn/2018/09/04/iOS 修改UserAgent/">
+    <link itemprop="mainEntityOfPage" href="https://www.cqzhong.cn/2018/09/04/WKWebView(UIWebView)的携带cookie/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="曹庆中">
@@ -1638,7 +1638,7 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2018/09/04/iOS 修改UserAgent/" itemprop="url">iOS 修改UserAgent</a></h1>
+                <a class="post-title-link" href="/2018/09/04/WKWebView(UIWebView)的携带cookie/" itemprop="url">WKWebView(UIWebView)的携带cookie</a></h1>
         
 
         <div class="post-meta">
@@ -1711,11 +1711,11 @@
 
       
         
-          <p>首部字段 User-Agent 会将创建请求的浏览器信息和用户代理等信息传达给服务器。<br>
-由网络爬虫发起请求时，有可能会在字段哪添加爬虫作者等电子邮箱地址。此外，如果请求经过代理，那么中间也很可能被添加上代理服务器名称</p>
+          <h3 id="js-携带-cookie-的形式"><a class="markdownIt-Anchor" href="#js-携带-cookie-的形式"></a> JS 携带 cookie 的形式</h3>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">  WKUserScript * cookieScript = [[WKUserScript alloc] initWithSource:self.documentCookie injectionTime:WKUserScriptInjectionTimeAtDocumentStart forMainFrameOnly:<span class="literal">false</span>];</span><br><span class="line">  [self.webView.configuration.userContentController addUserScript:cookieScript];</span><br><span class="line">  [webView evaluateJavaScript:self.documentCookie completionHandler:^(id result, NSError *error) &#123;</span><br><span class="line">  &#125;];</span><br><span class="line">- (NSString *)cookieHeaderField &#123;</span><br><span class="line">    <span class="keyword">return</span> CDSQLITE_MANAGER.isLogin ? [NSString stringWithFormat:@<span class="string">"%@=%@;%@=%@;"</span>,CDRequestKeyDeviceID, [self uuid], CDRequestKeyToken, CDSQLITE_MANAGER.token] : @<span class="string">""</span>;</span><br><span class="line">&#125;</span><br><span class="line">- (NSString *)uuid &#123;</span><br><span class="line">    <span class="keyword">return</span> [RMUUid getUUid];</span><br><span class="line">&#125;</span><br><span class="line">- (NSString *)documentCookie &#123;</span><br><span class="line">    <span class="comment">//max-age=60*60';domain=m-test.changguwen.com</span></span><br><span class="line">    <span class="keyword">return</span> [NSString stringWithFormat:@<span class="string">"document.cookie='%@path=/';"</span>,[self cookieHeaderField]];</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
           <!--noindex-->
           <div class="post-button text-center">
-            <a class="btn" href="/2018/09/04/iOS 修改UserAgent/#more" rel="contents">
+            <a class="btn" href="/2018/09/04/WKWebView(UIWebView)的携带cookie/#more" rel="contents">
               阅读全文 &raquo;
             </a>
           </div>
